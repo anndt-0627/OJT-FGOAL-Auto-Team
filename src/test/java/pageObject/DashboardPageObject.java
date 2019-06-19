@@ -26,4 +26,9 @@ public class DashboardPageObject {
         element = driver.findElement(By.xpath("//span[contains(text(),'Dashboard')]"));
         return element;
     }
+
+    public static WebElement btn_closeDebugBar(WebDriver driver) {
+        element = driver.findElement(By.xpath("//a[@class='phpdebugbar-close-btn']"));
+        return element;
+    }
 }
