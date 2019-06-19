@@ -92,6 +92,11 @@ public class UserListPageObject {
         return element;
     }
 
+    public static WebElement lb_NoResultMatching(WebDriver driver) {
+        element = driver.findElement(By.xpath("//td[@class='dataTables_empty']"));
+        return element;
+    }
+
     //Number search result
     public static WebElement lb_totalResult(WebDriver driver) {
         element = driver.findElement(By.xpath("//div[@id='dataTables_info']"));
