@@ -59,10 +59,6 @@ public class UserListPageObject {
     }
 
     //List search result
-    public static WebElement lb_listResult(WebDriver driver) {
-        element = driver.findElement(By.xpath("//table[@id='dataTables']//tbody/tr/td[position()=1]"));
-        return element;
-    }
     public static WebElement lb_ResultMatchingNo(WebDriver driver,int index_result) {
         element = driver.findElement(By.xpath("//table[@id='dataTables']//tbody/tr["+index_result+"]/td[position()=1]"));
         return element;

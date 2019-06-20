@@ -9,22 +9,26 @@ Feature: User List
     Then User should be access Fgoal successfully
 
   Scenario Outline: Verify list search result when search with exited input
-    Given User navigates to User List
+    Given User navigate to User List
     When User search with <input_name>
     Then Display results mapping with <search_condition> of user
 
     Examples:
-      | input_name                     | search_condition |
-      | exited Name exactly match      | Name of user     |
-      | existed Name partial match     | Name of user     |
-      | exited Email exactly match     | Email of user    |
-      | existed Email partial match    | Email of user    |
-      | exited Code exactly match      | Code of user     |
-      | existed Code partial match     | Code of user     |
-      | Gender is Male                 | Gender of user   |
-      | Gender is Female               | Gender of user   |
-      | exited Position exactly match  | Position of user |
-      | existed Position partial match | Position of user |
+      | input_name                         | search_condition |
+      | exited ID exactly match            | ID               |
+      | existed ID partial match           | ID               |
+      | exited Name exactly match          | Name             |
+      | existed Name partial match         | Name             |
+      | exited Email exactly match         | Email            |
+      | existed Email partial match        | Email            |
+      | exited Code exactly match          | Code             |
+      | existed Code partial match         | Code             |
+      | Gender is Male                     | Gender           |
+      | Gender is Female                   | Gender           |
+      | exited Phone number exactly match  | Phone            |
+      | existed Phone number partial match | Phone            |
+      | exited Position exactly match      | Position         |
+      | existed Position partial match     | Position         |
 
   Scenario Outline: Verify list search result when search with no exited input
     Given User navigate to User List
