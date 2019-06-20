@@ -65,7 +65,7 @@ public class UserListStep {
         int total_result_in_current_page = Integer.parseInt(UserListPageObject.lb_totalResult(driver).getText().split(" ")[3]);
         for (int i = 1; i <= total_result_in_current_page; i++) {
             //Normalized characters
-            String actual_name_normalize = Normalizer.normalize(UserListPageObject.lb_ResultMatchingName(driver, 2).getText(), Normalizer.Form.NFD);
+            String actual_name_normalize = Normalizer.normalize(UserListPageObject.lb_ResultMatchingName(driver, i).getText(), Normalizer.Form.NFD);
             //Compile diacritical mark for Tieng Viet character
             Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
             //Return string after compile
@@ -94,7 +94,7 @@ public class UserListStep {
         UserListPageObject.txt_inputSearch(driver).sendKeys(expected_input);
     }
 
-    @Then("^Display results mapping with Email of userr$")
+    @Then("^Display results mapping with Email of user$")
     public void display_results_mapping_with_Email_of_user() {
         Assert.assertTrue(UserListPageObject.lb_EmailColumn(driver).isDisplayed());
         int total_result_in_current_page = Integer.parseInt(UserListPageObject.lb_totalResult(driver).getText().split(" ")[3]);
@@ -157,7 +157,7 @@ public class UserListStep {
         UserListPageObject.txt_inputSearch(driver).sendKeys(expected_input);
     }
 
-    @When("^User search with exited exited Phone number exactly match$")
+    @When("^User search with exited Phone number exactly match$")
     public void user_search_with_exited_Phone_exactly_match() {
         wait.until(ExpectedConditions.visibilityOf(UserListPageObject.txt_inputSearch(driver)));
         expected_input = data_userList.getString("exited_phone");

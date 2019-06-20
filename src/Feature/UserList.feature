@@ -39,3 +39,25 @@ Feature: User List
       | input_name                |
       | special characters        |
       | not matching wit any data |
+
+#  Scenario Outline: Verify can order list search result
+#    Given User navigate to User List
+#    When User orders <input_name> by <sort_by>
+#    Then Display list results orders <input_name> by <sort_by> correctly
+#
+#    Examples:
+#      | input_name | sort_by    |
+#      | ID         | Ascending  |
+#      | ID         | Descending |
+#      | Name       | Ascending  |
+#      | Name       | Descending |
+#      | Email      | Ascending  |
+#      | Email      | Descending |
+#      | Code       | Ascending  |
+#      | Code       | Descending |
+#      | Gender     | Ascending  |
+#      | Gender     | Descending |
+#      | Phone      | Ascending  |
+#      | Phone      | Descending |
+#      | Position   | Ascending  |
+#      | Position   | Descending |
