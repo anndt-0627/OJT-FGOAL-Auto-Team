@@ -7,6 +7,7 @@ Feature: FGOAL_Object_Edit
 #    And User perform Login
 #    Then [Home] screen of FGoal display
 
+@Valid_case
 Scenario Outline: User can navigate to screen objective detail
     Given User is on Dashboard screen
     When User select quarter is current quarter
@@ -38,7 +39,8 @@ Scenario Outline: User can edit percent of objective user has done until current
     |70				|OnTrack	|
     |99				|OnTrack	|
     |100			|Excellent	|
-    
+ 
+@Valid_case    
 Scenario Outline: User can edit percent of objective user has done until current time when click on up-arrow of this field
     Given User is on Objective Detail screen
     When Each time user click on the up-arrow of field percent of objective user has done
@@ -57,7 +59,8 @@ Scenario Outline: User can edit percent of objective user has done until current
     |70				|OnTrack	|
     |99				|OnTrack	|
     |100			|Excellent	|
-    
+
+@Valid_case    
 Scenario Outline: User can edit percent of objective user has done until current time when click on down-arrow of this field
     Given User is on Objective Detail screen
     When Each time user click on the down-arrow of field percent of objective user has done
@@ -76,7 +79,8 @@ Scenario Outline: User can edit percent of objective user has done until current
     |70				|OnTrack	|
     |99				|OnTrack	|
     |100			|Excellent	|
-   
+
+@Valid_case   
 Scenario Outline: User can edit weight of objective
     Given User is on Objective Detail screen
     When User click on field weight of objective
@@ -93,14 +97,16 @@ Scenario Outline: User can edit weight of objective
     |3				|
     |4				|
     |5				|
-     
+
+@Valid_case     
 Scenario: User can edit weight of objective when click on up-arrow of this field
     Given User is on Objective Detail screen
     When Each time user click on the up-arrow of field weight of objective
     Then Weight of field objective is increase 1 unit
     And New weight of objective user has done is updated
     And Message update objective successfully is displayed
-    
+
+@Valid_case    
 Scenario: User can edit weight of objective when click on down-arrow of this field
     Given User is on Objective Detail screen
     When Each time user click on the up-arrow of field weight of objective
@@ -118,25 +124,28 @@ Scenario Outline: User can't edit percent of objective user has done until curre
     And Error message is displayed
     
     Examples:
-    |ValidWeight	|
+    |InvalidPercent	|
     |-1				|
     |0.1			|
    	|101			|
-    
+
+@Valid_case    
 Scenario: User can't leave percent of objective user has done until current time is blank
     Given User is on Objective Detail screen
     When User  click on field percent of objective user has done and clear it
     And User click outside of the field
     Then Empty value isn't accepted
     And Error message is displayed
-    
+
+@Valid_case    
 Scenario: User can't edit weight of objective with invalid data
     Given User is on Objective Detail screen
     When User  click on field weight of objective and clear it
     And User click outside of the field
     Then Empty value isn't accepted
     And Error message is displayed
-    
+
+@Valid_case    
 Scenario Outline: User can't edit weight of objectiv with invalid data
     Given User is on Objective Detail screen
     When User click on field weight of objective

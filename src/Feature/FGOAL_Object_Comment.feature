@@ -7,6 +7,7 @@ Feature: FGOAL_Object_Comment
 #    And User perform Login
 #    Then [Home] screen of FGoal display
 
+@Valid_case
 Scenario: User can navigate to screen objective detail
     Given User is on Dashboard screen
     When User select quarter is current quarter
@@ -14,19 +15,20 @@ Scenario: User can navigate to screen objective detail
     Then Text box comment of objective is displayed
     
 @Valid_case
-Scenario: User can push a comment with min length
+Scenario: User can push a valid comment
     Given User is on Objective detail screen
     When User click on icon text box in My Objectives
-    And User input comment text with min length
-    And User press Enter
+    And User input a valid comment
+    And User perform add comment action
     Then The comment user has just submit is displayed
     And Number of comment at icon text box is updated exactly
-    
-Scenario: User can push a comment with max length
+
+@Valid_case
+Scenario: User can push a comment with long content
     Given User is on Objective detail screen
     When User click on icon text box in My Objectives
-    And User input comment text with max length
-    And User press Enter
+    And User input comment text with long content
+    And User perform add comment action
     Then The comment user has just submit is displayed
     And Number of comment at icon text box is updated exactly
     
@@ -35,7 +37,7 @@ Scenario: User can't submit an empty comment
     Given User is on Objective detail screen
     When User click on icon text box in My Objectives
     And User leave comment text box  blank
-    And User press Enter
+    And User perform add comment action
     Then The blank comment isn't accepted
     And Error message is displayed
     
