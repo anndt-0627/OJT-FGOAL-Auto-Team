@@ -1,22 +1,21 @@
 Feature: FGOAL_Object_View
   Description: Objective View feature file
   
-#Scenario: Login FGoal
-#    Given User goes to FGoal screen
-#    When User clicks on [Login via WSM] button
-#    And User perform Login
-#    Then [Home] screen of FGoal display
+Background: 
+    Given User goes to FGoal screen
+    When User perform login into WSM
+    Then FGoal is loggedin and Dashboard screen of FGoal displays
 
 @Valid_case
 Scenario Outline: User can navigate to screen objective detail to view
-    Given User is on Dashboard screen
+    Given User back to Dashboard screen
     When User select quarter is current quarter
     And User click on an "<ObjectiveName>" in My Objectives
     Then User navigates to Objective Details screen successfully
     
 	Examples:
-      |ObjectiveName	| 
-      |ChauTTB			|
+      |ObjectiveName		| 
+      |ChauTTB_01			|
       
 @Valid_case      
 Scenario Outline: Quarter of objective is displayed corectly

@@ -32,6 +32,21 @@ Scenario: User can push a comment with long content
     Then The comment user has just submit is displayed
     And Number of comment at icon text box is updated exactly
     
+@Valid_case
+Scenario: User can edit his comment
+    Given User is on Objective detail screen
+    When User commented on object
+    And User click on icon pen of comment
+    And User edit comment text
+    And User perform add comment action
+    Then The comment user has just editted is displayed
+
+@Valid_case
+Scenario: User can't edit comment of other account
+    Given User is on Objective detail screen
+    When Other people commented on object 
+    Then Icon pen isn't displayed at comment of other people 
+        
 @Invalid_case       
 Scenario: User can't submit an empty comment 
     Given User is on Objective detail screen
