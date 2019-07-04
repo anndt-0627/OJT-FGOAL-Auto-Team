@@ -14,11 +14,6 @@ public class pageObj_Objective_QuickActions_UpdateWeight {
 		return element;
 	}
 
-	public static WebElement popupUpdateWeight(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id='changeWeightObjective']"));
-		return element;
-	}
-
 	public static WebElement popupUpdateWeight_lblTitle(WebDriver driver) {
 		element = driver.findElement(By.xpath(
 				"//div[@id='changeWeightObjective']//h4[@class='modal-title'][contains(text(),'Update weight')]"));

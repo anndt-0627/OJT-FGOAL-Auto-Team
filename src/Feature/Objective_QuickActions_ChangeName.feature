@@ -45,7 +45,7 @@ Feature: Objective_Quick Actions
       | objName               |
       | Improve English skill |
 
-  Scenario Outline: Verify Update Objective title popup closes incase user update Objective Name successfully with valid data
+  Scenario Outline: Verify Update Objective title popup closes and Success message displays and Objective Name in My Objectives section is updated also incase user updated Objective Name successfully with valid data
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
@@ -53,41 +53,15 @@ Feature: Objective_Quick Actions
     And User updates the data with value is "<valid_value>" into Name textbox
     And User submits Update Objective title popup
     Then Update Objective title popup closes
-
-    Examples: 
-      | objName               | valid_value             |
-      | Improve English skill | Improve English skill 1 |
-
-  Scenario Outline: Verify Success message displays incase user updated Objective Name successfully with valid data
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Name textbox
-    And User submits Update Objective title popup
-    Then Update Objective title popup closes
-    And Success message displays
-
-    Examples: 
-      | objName                 | valid_value             |
-      | Improve English skill 1 | Improve English skill 2 |
-
-  Scenario Outline: Verify Objective Name in My Objectives section is updated also incase user updated Objective Name successfully with valid data
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Name textbox
-    And User submits Update Objective title popup
-    Then Update Objective title popup closes
+    And Success objective update message displays
     And Objective Name in Objective section is equal to "<valid_value>"
 
     Examples: 
-      | objName                 | valid_value                  |
-      | Improve English skill 2 | 123 456 789                  |
-      | 123 456 789             | !@$ %^& ***                  |
-      | !@$ %^& ***             | 123 qwe !@$                  |
-      | 123 qwe !@$             | <b>Improve English skill</b> |
+      | objName               | valid_value                  |
+      | Improve English skill | 123 456 789                  |
+      | 123 456 789           | !@$ %^& ***                  |
+      | !@$ %^& ***           | 123 qwe !@$                  |
+      | 123 qwe !@$           | <b>Improve English skill</b> |
 
   Scenario Outline: Verify user is not able to update Objective Name that it is existed in system
     Given User navigates to Dashboard screen
@@ -96,13 +70,13 @@ Feature: Objective_Quick Actions
     And User clicks on Update Objective title option in Quick Actions menu
     And User updates the data with value is "<objName>" into Name textbox
     And User submits Update Objective title popup
-    Then The error_message displays
+    Then The error message exist data displays
 
     Examples: 
       | objNameNew                | objWeightNew | objName                      |
       | Improve English skill New |            3 | <b>Improve English skill</b> |
 
-  Scenario Outline: Verify user is not able to update Objective Name successfully
+  Scenario Outline: Verify user is not able to update Objective Name in case user clicks on Close button
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section

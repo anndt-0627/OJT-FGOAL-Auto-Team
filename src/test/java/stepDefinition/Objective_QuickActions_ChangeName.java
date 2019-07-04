@@ -27,11 +27,10 @@ public class Objective_QuickActions_ChangeName extends Common {
 
 	@When("^Create a new Objective with \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void create_a_new_Objective_with_and(String objName, String objWeight) {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
+		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
 		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
 		pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver).click();
 
-		pageObj_Objective_QuickActions_ChangeName.txtName(driver).clear();
 		pageObj_Objective_QuickActions_ChangeName.txtName(driver).sendKeys(objName);
 
 		pageObj_Objective_QuickActions_ChangeName.txtWeight(driver).clear();
@@ -42,15 +41,15 @@ public class Objective_QuickActions_ChangeName extends Common {
 
 	@When("^User clicks on \"([^\"]*)\" item in My Objectives section$")
 	public void user_clicks_on_item_in_My_Objectives_section(String objName) {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
+		visibilityOfElementToBeClickable(driver, 20,
+				pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
 		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
 		pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName).click();
 	}
 
 	@When("^User clicks on the Quick Actions icon in Objective section$")
 	public void user_clicks_on_the_Quick_Actions_icon_in_Objective_section() {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver));
-		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver));
+		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver));
 		pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver).click();
 	}
 
@@ -62,27 +61,31 @@ public class Objective_QuickActions_ChangeName extends Common {
 
 	@Then("^Update Objective title popup opens$")
 	public void update_Objective_title_popup_opens() {
-		visibilityOf(driver, 2000,
-				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
+		visibilityOf(driver, 200, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver).isDisplayed());
 	}
 
 	@Then("^Title of Update Objective title popup displays$")
 	public void title_of_Update_Objective_title_popup_displays() {
-		visibilityOf(driver, 2000,
-				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
-		String text = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver).getText();
-		assertEquals(properties_value.getString("popupUpdateObjectiveTitle_lblTitle"), text);
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
+		String actual_lblTitle = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver)
+				.getText();
+		String expected_lblTitle = properties_value.getString("OBJ_NAME_lblTITLE");
+		assertEquals(expected_lblTitle, actual_lblTitle);
 	}
 
 	@Then("^Name label and asterisk symbol displays in Update Objective title popup$")
 	public void name_label_and_asterisk_symbol_displays_in_Update_Objective_title_popup() {
-		String text = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblName(driver).getText();
-		assertEquals(properties_value.getString("popupUpdateObjectiveTitle_lblName"), text);
-		String asterisk = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_sybAsterisk(driver)
+		String actual_lblName = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblName(driver)
 				.getText();
-		assertEquals(properties_value.getString("symAsterisk"), asterisk);
+		String expected_lblName = properties_value.getString("OBJ_NAME_lblNAME");
+		assertEquals(expected_lblName, actual_lblName);
+
+		String actual_sybAsterisk = pageObj_Objective_QuickActions_ChangeName
+				.popupUpdateObjectiveTitle_sybAsterisk(driver).getText();
+		String expected_sybAsterisk = properties_value.getString("OBJ_sybASTERISK");
+		assertEquals(expected_sybAsterisk, actual_sybAsterisk);
 	}
 
 	@Then("^Name textbox displays in Update Objective title popup$")
@@ -104,16 +107,16 @@ public class Objective_QuickActions_ChangeName extends Common {
 	}
 
 	@Then("^The value in Name textbox is equal to \"([^\"]*)\"$")
-	public void the_value_in_Name_textbox_is_equal_to(String objName) {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver));
-		String text = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver)
+	public void the_value_in_Name_textbox_is_equal_to(String expected_objName) {
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver));
+		String actual_txtName = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver)
 				.getAttribute("value");
-		assertEquals(objName, text);
+		assertEquals(expected_objName, actual_txtName);
 	}
 
 	@When("^User updates the data with value is \"([^\"]*)\" into Name textbox$")
 	public void user_updates_the_data_with_value_is_into_Name_textbox(String valid_value) {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver));
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver));
 		pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver).clear();
 		pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver).sendKeys(valid_value);
 	}
@@ -129,25 +132,26 @@ public class Objective_QuickActions_ChangeName extends Common {
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver).isDisplayed());
 	}
 
-	@Then("^Success message displays$")
-	public void success_message_displays() {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.msgSuccess(driver));
+	@Then("^Success objective update message displays$")
+	public void success_objective_update_message_displays() {
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.msgSuccess(driver));
 		String text = pageObj_Objective_QuickActions_ChangeName.msgSuccess(driver).getText();
-		assertEquals(properties_value.getString("msgSuccess"), text);
+		assertEquals(properties_value.getString("OBJ_UPDATE_MSG_SUCCESS"), text);
 	}
 
 	@Then("^Objective Name in Objective section is equal to \"([^\"]*)\"$")
 	public void objective_Name_in_Objective_section_is_equal_to(String valid_value) {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.lblObjectiveName(driver));
-		String text = pageObj_Objective_QuickActions_ChangeName.lblObjectiveName(driver).getText();
-		assertEquals(valid_value, text);
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.lblObjectiveName(driver));
+		String actual_lblObjectiveName = pageObj_Objective_QuickActions_ChangeName.lblObjectiveName(driver).getText();
+		assertEquals(valid_value, actual_lblObjectiveName);
 	}
 
-	@Then("^The error_message displays$")
-	public void the_error_message_displays() {
-		visibilityOf(driver, 2000, pageObj_Objective_QuickActions_ChangeName.msgError(driver));
-		String text = pageObj_Objective_QuickActions_ChangeName.msgError(driver).getText();
-		assertEquals(properties_value.getString("msgError_UpdateObjectiveTitle"), text);
+	@Then("^The error message exist data displays$")
+	public void the_error_message_exist_data_displays() {
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.msgError(driver));
+		String actual_msgError = pageObj_Objective_QuickActions_ChangeName.msgError(driver).getText();
+		String expected_msgError = properties_value.getString("OBJ_UPDATE_MSG_ERROR_EXISTED_NAME");
+		assertEquals(expected_msgError, actual_msgError);
 	}
 
 	@When("^User clicks on Close button in Update Objective title popup$")

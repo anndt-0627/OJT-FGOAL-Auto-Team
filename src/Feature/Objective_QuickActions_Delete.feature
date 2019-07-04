@@ -33,7 +33,7 @@ Feature: Objective_Quick Actions
       | objName         |
       | Test and Delete |
 
-  Scenario Outline: Verify user is not able to delete Objective successfully
+  Scenario Outline: Verify user is not able to delete Objective in case user clicks on Close button
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section

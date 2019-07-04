@@ -45,7 +45,7 @@ Feature: Objective_Quick Actions
       | objName          | objWeight |
       | Improve Weight 2 |         4 |
 
-  Scenario Outline: Verify Objective weight popup closes incase user updated Objective Weight successfully with valid data
+  Scenario Outline: Verify Objective weight popup closes and Success message displays and Objective Weight in Objective section is updated also incase user updated Objective Weight successfully
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
@@ -53,33 +53,7 @@ Feature: Objective_Quick Actions
     And User updates the data with value is "<valid_value>" into Weight textbox
     And User submits Update weight popup
     Then Update weight popup closes
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           3 |
-
-  Scenario Outline: Verify Success message displays incase user updated Objective Weight successfully
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
-    And Success message displays
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           2 |
-
-  Scenario Outline: Verify Objective Weight in Objective section is updated also incase user updated Objective Weight successfully
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
+    And Success objective update message displays
     And Objective Weight in Objective section is equal to "<valid_value>"
 
     Examples: 
@@ -103,7 +77,7 @@ Feature: Objective_Quick Actions
       | Improve Weight |             6 | invalid min or max value |
       | Improve Weight |           1.5 | invalid integer value    |
 
-  Scenario Outline: Verify user is not able to update Objective Weight successfully
+  Scenario Outline: Verify user is not able to update Objective Weight in case user clicks on Close button
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
