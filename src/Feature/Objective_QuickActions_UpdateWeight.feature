@@ -45,38 +45,7 @@ Feature: Objective_Quick Actions
       | objName          | objWeight |
       | Improve Weight 2 |         4 |
 
-<<<<<<< HEAD:src/Feature/Objective_QuickActions_UpdateWeight.feature
   Scenario Outline: Verify Update Objective Weight successfully
-=======
-  Scenario Outline: Verify Objective weight popup closes incase user updated Objective Weight successfully with valid data
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           3 |
-
-  Scenario Outline: Verify Success message displays incase user updated Objective Weight successfully
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
-    And Success message displays
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           2 |
-
-  Scenario Outline: Verify Objective Weight in Objective section is updated also incase user updated Objective Weight successfully
->>>>>>> Objective_QuickActions:src/Feature/Objective_QuickActions_UpdateWeight.feature
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
@@ -108,11 +77,7 @@ Feature: Objective_Quick Actions
       | Improve Weight |             6 | invalid min or max value |
       | Improve Weight |           1.5 | invalid integer value    |
 
-<<<<<<< HEAD:src/Feature/Objective_QuickActions_UpdateWeight.feature
   Scenario Outline: Verify user is not able to update Objective Weight in case user clicks on Close button
-=======
-  Scenario Outline: Verify user is not able to update Objective Weight successfully
->>>>>>> Objective_QuickActions:src/Feature/Objective_QuickActions_UpdateWeight.feature
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
