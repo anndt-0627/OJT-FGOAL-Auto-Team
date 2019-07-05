@@ -2,12 +2,14 @@ Feature: Objective_Quick Actions
   Description: Testing Change Objective Weight in Quick Actions of Objective
 
   Background: 
-    Given User goes to FGoal screen
-    When User perform login into WSM
-    Then FGoal is loggedin and Dashboard screen of FGoal displays
+    Given User navigate to Login page of Fgoal
+    When User navigate to Login page of WSM
+    And User enter valid account as user account
+    And User enter valid password as password of user
+    And User navigates to Dashboard screen
 
   Scenario Outline: Verify the Update weight popup shows up when selecting Update weight option in Quick Actions menu
-    Given User is on Dashboard screen
+    Given User navigates to Dashboard screen
     When Create a new Objective with "<objName>" and "<objWeight>"
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
@@ -18,7 +20,7 @@ Feature: Objective_Quick Actions
       | Improve Weight |         4 |
 
   Scenario Outline: Verify the components of Update weight popup
-    Given User is on Dashboard screen
+    Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
@@ -33,7 +35,7 @@ Feature: Objective_Quick Actions
       | Improve Weight |
 
   Scenario Outline: Verify the value in Weight textbox is correct with the Objective that user clicks on
-    Given User is on Dashboard screen
+    Given User navigates to Dashboard screen
     When Create a new Objective with "<objName>" and "<objWeight>"
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
@@ -43,41 +45,15 @@ Feature: Objective_Quick Actions
       | objName          | objWeight |
       | Improve Weight 2 |         4 |
 
-  Scenario Outline: Verify Objective weight popup closes incase user updated Objective Weight successfully with valid data
-    Given User is on Dashboard screen
+  Scenario Outline: Verify Update Objective Weight successfully
+    Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
     And User updates the data with value is "<valid_value>" into Weight textbox
     And User submits Update weight popup
     Then Update weight popup closes
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           3 |
-
-  Scenario Outline: Verify Success message displays incase user updated Objective Weight successfully
-    Given User is on Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
-    And Success message displays
-
-    Examples: 
-      | objName        | valid_value |
-      | Improve Weight |           2 |
-
-  Scenario Outline: Verify Objective Weight in Objective section is updated also incase user updated Objective Weight successfully
-    Given User is on Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    And User updates the data with value is "<valid_value>" into Weight textbox
-    And User submits Update weight popup
-    Then Update weight popup closes
+    And Success objective update message displays
     And Objective Weight in Objective section is equal to "<valid_value>"
 
     Examples: 
@@ -86,23 +62,23 @@ Feature: Objective_Quick Actions
       | Improve Weight |           1 |
 
   Scenario Outline: Verify user is not able to update Objective Weight with invalid data
-    Given User is on Dashboard screen
+    Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
     And User updates the data with value is "<invalid_value>" into Weight textbox
     And User submits Update weight popup
-    Then The "<error_message>" displays under Weight textbox
+    Then The <error_message> error message displays under Weight textbox
 
     Examples: 
-      | objName        | invalid_value | error_message                                                |
-      | Improve Weight |            -5 | Weight must greater than or equal 1 and less than or equal 5 |
-      | Improve Weight |             0 | Weight must greater than or equal 1 and less than or equal 5 |
-      | Improve Weight |             6 | Weight must greater than or equal 1 and less than or equal 5 |
-      | Improve Weight |           1.5 | Weight must be digit                                         |
+      | objName        | invalid_value | error_message            |
+      | Improve Weight |            -5 | invalid min or max value |
+      | Improve Weight |             0 | invalid min or max value |
+      | Improve Weight |             6 | invalid min or max value |
+      | Improve Weight |           1.5 | invalid integer value    |
 
-  Scenario Outline: Verify user is not able to update Objective Weight successfully
-    Given User is on Dashboard screen
+  Scenario Outline: Verify user is not able to update Objective Weight in case user clicks on Close button
+    Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Update weight option in Quick Actions menu
