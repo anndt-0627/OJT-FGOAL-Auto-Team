@@ -37,7 +37,7 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver));
 		String actual_lblTitle = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver)
 				.getText();
-		String expected_lblTitle = properties_value.getString("OBJ_WEIGHT_lblTITLE");
+		String expected_lblTitle = properties_value.getString("OBJ_WEIGHT_TITLE");
 		assertEquals(expected_lblTitle, actual_lblTitle);
 	}
 
@@ -45,12 +45,12 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 	public void weight_label_and_asterisk_symbol_displays_in_Update_weight_popup() {
 		String actual_lblWeight = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblWeight(driver)
 				.getText();
-		String expected_lblWeight = properties_value.getString("OBJ_WEIGHT_lblWEIGHT");
+		String expected_lblWeight = properties_value.getString("OBJ_WEIGHT_WEIGHT");
 		assertEquals(expected_lblWeight, actual_lblWeight);
 
 		String actual_sybAsterisk = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_sybAsterisk(driver)
 				.getText();
-		String expected_sybAsterisk = properties_value.getString("OBJ_sybASTERISK");
+		String expected_sybAsterisk = properties_value.getString("OBJ_ASTERISK");
 		assertEquals(expected_sybAsterisk, actual_sybAsterisk);
 	}
 

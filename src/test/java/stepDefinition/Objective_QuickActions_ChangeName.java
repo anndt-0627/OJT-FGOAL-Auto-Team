@@ -71,7 +71,7 @@ public class Objective_QuickActions_ChangeName extends Common {
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
 		String actual_lblTitle = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver)
 				.getText();
-		String expected_lblTitle = properties_value.getString("OBJ_NAME_lblTITLE");
+		String expected_lblTitle = properties_value.getString("OBJ_NAME_TITLE");
 		assertEquals(expected_lblTitle, actual_lblTitle);
 	}
 
@@ -79,12 +79,12 @@ public class Objective_QuickActions_ChangeName extends Common {
 	public void name_label_and_asterisk_symbol_displays_in_Update_Objective_title_popup() {
 		String actual_lblName = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblName(driver)
 				.getText();
-		String expected_lblName = properties_value.getString("OBJ_NAME_lblNAME");
+		String expected_lblName = properties_value.getString("OBJ_NAME_NAME");
 		assertEquals(expected_lblName, actual_lblName);
 
 		String actual_sybAsterisk = pageObj_Objective_QuickActions_ChangeName
 				.popupUpdateObjectiveTitle_sybAsterisk(driver).getText();
-		String expected_sybAsterisk = properties_value.getString("OBJ_sybASTERISK");
+		String expected_sybAsterisk = properties_value.getString("OBJ_ASTERISK");
 		assertEquals(expected_sybAsterisk, actual_sybAsterisk);
 	}
 
