@@ -45,7 +45,7 @@ Feature: Objective_Quick Actions
       | objName               |
       | Improve English skill |
 
-  Scenario Outline: Verify Update Objective title popup closes and Success message displays and Objective Name in My Objectives section is updated also incase user updated Objective Name successfully with valid data
+  Scenario Outline: Verify Update Objective Name successfully with valid data
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section

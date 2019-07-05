@@ -45,7 +45,7 @@ Feature: Objective_Quick Actions
       | objName          | objWeight |
       | Improve Weight 2 |         4 |
 
-  Scenario Outline: Verify Objective weight popup closes and Success message displays and Objective Weight in Objective section is updated also incase user updated Objective Weight successfully
+  Scenario Outline: Verify Update Objective Weight successfully
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section

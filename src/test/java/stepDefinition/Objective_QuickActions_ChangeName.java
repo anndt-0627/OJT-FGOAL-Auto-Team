@@ -61,7 +61,7 @@ public class Objective_QuickActions_ChangeName extends Common {
 
 	@Then("^Update Objective title popup opens$")
 	public void update_Objective_title_popup_opens() {
-		visibilityOf(driver, 200, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver).isDisplayed());
 	}
