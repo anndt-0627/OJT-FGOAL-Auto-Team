@@ -54,7 +54,7 @@ public class Objective_QuickActions_Delete extends Common {
 
 	@Then("^Delete button displays in Delete objective popup$")
 	public void delete_button_displays_in_Delete_objective_popup() {
-		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnUpdate(driver).isDisplayed());
+		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver).isDisplayed());
 	}
 
 	@When("^User clicks on Close button in Delete objective popup$")
@@ -73,14 +73,15 @@ public class Objective_QuickActions_Delete extends Common {
 	@When("^User clicks on Delete button in Delete objective popup$")
 	public void user_clicks_on_Delete_button_in_Delete_objective_popup() {
 		visibilityOfElementToBeClickable(driver, 20,
-				pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnUpdate(driver));
-		pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnUpdate(driver).click();
+				pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver));
+		pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver).click();
 	}
 
-	@Then("^Objective \"([^\"]*)\" did not display on Dasdboard screen$")
-	public void objective_did_not_display_on_Dasdboard_screen(String objName) {
+	@Then("^Objective \"([^\"]*)\" did not display on Dashboard screen$")
+	public void objective_did_not_display_on_Dashboard_screen(String objName) {
+		// Go to Dashboard screen
 		pageObj_Objective_QuickActions_ChangeName.menuDashboard(driver).click();
-
+		// Verify the deleted Objective is displayed on Dashboard screen or not?
 		try {
 			Assert.assertTrue(
 					pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName).isDisplayed());

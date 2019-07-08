@@ -31,7 +31,7 @@ public class pageObj_Objective_QuickActions_Delete {
 		return element;
 	}
 
-	public static WebElement popupDeleteObjective_btnUpdate(WebDriver driver) {
+	public static WebElement popupDeleteObjective_btnDelete(WebDriver driver) {
 		element = driver.findElement(By.xpath(
 				"//div[@class='modal fade show']//button[@class='btn btn-danger pull-left prevent-multiClick'][contains(text(),'Delete')]"));
 		return element;

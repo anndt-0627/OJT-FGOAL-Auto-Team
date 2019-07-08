@@ -52,7 +52,7 @@ Feature: Objective_Quick Actions
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Delete option in Quick Actions menu
     And User clicks on Delete button in Delete objective popup
-    Then Objective "<objName>" did not display on Dasdboard screen
+    Then Objective "<objName>" did not display on Dashboard screen
 
     Examples: 
       | objName         |
