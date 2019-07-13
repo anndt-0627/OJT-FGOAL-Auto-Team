@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -27,7 +26,6 @@ public class Add_New_Objective extends Common {
 		visibilityOfElementToBeClickable(driver, 10, PageObj_Add_New_Objective.dashboard_btn_AddObj(driver));
 		moveToElement(driver, PageObj_Add_New_Objective.dashboard_btn_AddObj(driver));
 		PageObj_Add_New_Objective.dashboard_btn_AddObj(driver).click();
-
 	}
 
 	@When("^Name is emty$")
@@ -72,7 +70,6 @@ public class Add_New_Objective extends Common {
 		currenttime = Dateformat.format(date);
 		visibilityOf(driver, 10, PageObj_Add_New_Objective.addObj_tbx_name(driver));
 		PageObj_Add_New_Objective.addObj_tbx_name(driver).sendKeys(objectname + currenttime);
-
 	}
 
 	@When("^Weight is empty$")

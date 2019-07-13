@@ -64,7 +64,6 @@ public class PageObj_Add_New_Objective {
     public static WebElement objDetails_lb_quarter(WebDriver driver, String quarter) {
         element = driver.findElement(By.xpath("//strong[contains(text(),'" + quarter + "')]"));
         return element;
-    }
-    
+    }  
   
 }
