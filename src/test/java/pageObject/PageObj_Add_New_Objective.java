@@ -7,19 +7,60 @@ import org.openqa.selenium.WebElement;
 public class PageObj_Add_New_Objective {
 	private static WebElement element = null;
 	public final String weight = "2";
-	public static String btn_fgoal_AddObj = "//button[@id='btn-createObj']";
-	public static String ddl_fgoal_AddObj_quarter = "//h5[@id='titleQuarter']";
-    public static String tbx_fgoal_AddObj_name = "//input[@name='name']";
-    public static String tbx_fgoal_AddObj_weight = "//input[@name='weight']";
-    public static String btn_fgoal_AddObj_add = "//div[@class='modal-footer']//button[@type='submit']";
-	public static String lb_fgoal_AddObj_error_name = "//label[@id='name-error']";
-	public static String lb_fgoal_AddObj_error_weight = " //div[@class='error input-group']";
-	public static String lb_fgoal_success_message = "//div[@class='alert alert-success']";
-	public static String lb_fgoal_Objective_name = "//label[@class='col-form-label mt-n1 float-left label-obj']";
-	public static String tbx_fgoal_Objective_weight = "//input[@class='form-control m-input objectiveWeight pdtl']";
-	
-    public static WebElement get_element(WebDriver driver, String xpath) {
-        element = driver.findElement(By.xpath(xpath));
+
+    public static WebElement dashboard_btn_AddObj(WebDriver driver) {
+        element = driver.findElement(By.xpath("//button[@id='btn-createObj']"));
         return element;
     }
+    
+    public static WebElement addObj_ddl_quarter(WebDriver driver) {
+        element = driver.findElement(By.xpath("//h5[@id='titleQuarter']"));
+        return element;
+    }
+    
+    public static WebElement addObj_tbx_name(WebDriver driver) {
+        element = driver.findElement(By.xpath("//input[@name='name']"));
+        return element;
+    }
+    
+    public static WebElement addObj_tbx_weight(WebDriver driver) {
+        element = driver.findElement(By.xpath("//input[@name='weight']"));
+        return element;
+    }
+    
+    public static WebElement addObj_btn_AddObj(WebDriver driver) {
+        element = driver.findElement(By.xpath("//div[@class='modal-footer']//button[@type='submit']"));
+        return element;
+    }
+    
+    public static WebElement addObj_lb_errorname(WebDriver driver) {
+        element = driver.findElement(By.xpath("//label[@id='name-error']"));
+        return element;
+    }
+    
+    public static WebElement addObj_lb_errorweight(WebDriver driver) {
+        element = driver.findElement(By.xpath("//div[@class='error input-group']"));
+        return element;
+    }
+    
+    public static WebElement objDetails_lb_successfulmessage(WebDriver driver) {
+        element = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
+        return element;
+    }
+    
+    public static WebElement objDetails_lb_objname(WebDriver driver) {
+        element = driver.findElement(By.xpath("//label[@class='col-form-label mt-n1 float-left label-obj']"));
+        return element;
+    }
+    
+    public static WebElement objDetails_txb_weight(WebDriver driver) {
+        element = driver.findElement(By.xpath("//input[@class='form-control m-input objectiveWeight pdtl']"));
+        return element;
+    }
+    public static WebElement objDetails_lb_quarter(WebDriver driver, String quarter) {
+        element = driver.findElement(By.xpath("//strong[contains(text(),'" + quarter + "')]"));
+        return element;
+    }
+    
+  
 }
