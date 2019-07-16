@@ -23,69 +23,6 @@ public class pageObj_Objective_QuickActions_LinkObjectives {
 		return element;
 	}
 
-	public static WebElement popupLinkToKeyResult_icoSelectGroup(WebDriver driver) {
-		element = driver
-				.findElement(By.xpath("//div[@class='m-wizard__step prevLinkObj m-wizard__step--current']//span"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_lblSelectGroup(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[@class='m-wizard__step prevLinkObj m-wizard__step--current']//div[@class='m-wizard__step-title'][contains(text(),'1. Select Group')]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_icoSelectGroup_Selected(WebDriver driver) {
-		element = driver.findElement(
-				By.xpath("//div[@class='m-wizard__step prevLinkObj m-wizard__step--done']//i[@class='la la-group']"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_lblSelectGroup_Selected(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[@class='m-wizard__step prevLinkObj m-wizard__step--done']//div[@class='m-wizard__step-title'][contains(text(),'1. Select Group')]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_icoSelectObjective(WebDriver driver) {
-		element = driver.findElement(
-				By.xpath("//div[@id='link_to_key_result_Obj']//div[@class='m-wizard__nav']//div[2]//a[1]//span[1]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_lblSelectObjective(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[@id='m_wizard']//div[@class='m-wizard__step-title'][contains(text(),'2. Select Objective')]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_icoSelectObjective_Selected(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[@class='m-wizard__step m-wizard__step--done']//span"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_lblSelectObjective_Selected(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[@class='m-wizard__step m-wizard__step--done']//div[@class='m-wizard__step-title'][contains(text(),'2. Select Objective')]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_icoSelectKeyResult(WebDriver driver) {
-		element = driver.findElement(
-				By.xpath("//div[@class='m-wizard__head m-portlet__padding-x mt-5']//div[3]//a[1]//span[1]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_lblSelectKeyResult(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[contains(text(),'3. Select Key Result')]"));
-		return element;
-	}
-
-	public static WebElement popupLinkToKeyResult_Progress(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[@id='m_wizard']//div[@class='progress']"));
-		return element;
-	}
-
 	public static WebElement popupLinkToKeyResult_lblGroup(WebDriver driver) {
 		element = driver.findElement(By.xpath(
 				"//div[@id='m_wizard_form_step_1']//label[@class='col-lg-2 col-sm-12 pl-0 font-weight-bold'][contains(text(),'Group')]"));

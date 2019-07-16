@@ -20,8 +20,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	@When("^User clicks on Link objectives option in Quick Actions menu$")
-	public void user_clicks_on_Link_objectives_option_in_Quick_Actions_menu() {
+	@When("^User perform to open Link to Key Result popup$")
+	public void user_perform_to_open_Link_to_Key_Result_popup() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.itmLinkObjectives(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.itmLinkObjectives(driver).click();
@@ -38,28 +38,6 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoClose(driver).isDisplayed());
 
-		// Select Group and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectGroup(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectGroup(driver)
-				.isDisplayed());
-
-		// Select Objective and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectObjective(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectObjective(driver)
-				.isDisplayed());
-
-		// Select Key Result and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectKeyResult(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectKeyResult(driver)
-				.isDisplayed());
-
-		// Progress bar displays in Link to Key Result popup
-		Assert.assertTrue(
-				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_Progress(driver).isDisplayed());
-
 		// Group label displays in Link to Key Result popup
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblGroup(driver).isDisplayed());
@@ -74,8 +52,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.isDisplayed());
 	}
 
-	@When("^User clicks on Close icon$")
-	public void user_clicks_on_Close_icon() {
+	@When("^User performs to close Link to Key Result popup$")
+	public void user_performs_to_close_Link_to_Key_Result_popup() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoClose(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoClose(driver).click();
@@ -88,8 +66,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblTitle(driver).isDisplayed());
 	}
 
-	@When("^User clicks on Group dropdown$")
-	public void user_clicks_on_Group_dropdown() throws Throwable {
+	@When("^User opens Group dropdown$")
+	public void user_opens_Group_dropdown() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup(driver).click();
@@ -112,6 +90,7 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 	@When("^User enters keyword not match into Search textbox$")
 	public void user_enters_keyword_not_match_into_Search_textbox() {
 		String keyword = properties_value.getString("OBJ_LINKOBJ_SEARCH_GROUP_NOT_EXIST");
+		user_opens_Group_dropdown();
 		user_enters_keyword_into_Search_textbox(keyword);
 	}
 
@@ -123,8 +102,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		assertEquals(expected_text, actual_text);
 	}
 
-	@When("^User clicks on Next button at Select Group screen$")
-	public void user_clicks_on_Next_button_at_Select_Group_screen() {
+	@When("^User performs to submit at Select Group screen$")
+	public void user_performs_to_submit_at_Select_Group_screen() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnNext_SelectGroup(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnNext_SelectGroup(driver).click();
@@ -141,12 +120,14 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 	@When("^User enters keyword matched into Search textbox$")
 	public void user_enters_keyword_matched_into_Search_textbox() {
 		String keyword = properties_value.getString("OBJ_LINKOBJ_SEARCH_GROUP_EXISTED");
+		user_opens_Group_dropdown();
 		user_enters_keyword_into_Search_textbox(keyword);
 	}
 
 	@When("^User enters keyword is a group that has no Objective into Search textbox$")
 	public void user_enters_keyword_is_a_group_that_has_no_Objective_into_Search_textbox() {
 		String keyword = properties_value.getString("OBJ_LINKOBJ_GROUP_HAS_NO_OBJ");
+		user_opens_Group_dropdown();
 		user_enters_keyword_into_Search_textbox(keyword);
 	}
 
@@ -160,28 +141,6 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		// Close icon displays in Link to Key Result popup
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoClose(driver).isDisplayed());
-
-		// Select Group and its updated icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_lblSelectGroup_Selected(driver).isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_icoSelectGroup_Selected(driver).isDisplayed());
-
-		// Select Objective and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectObjective(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectObjective(driver)
-				.isDisplayed());
-
-		// Select Key Result and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectKeyResult(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectKeyResult(driver)
-				.isDisplayed());
-
-		// Progress bar displays in Link to Key Result popup
-		Assert.assertTrue(
-				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_Progress(driver).isDisplayed());
 
 		// Objectives label displays in Link to Key Result popup
 		visibilityOf(driver, 20,
@@ -212,6 +171,7 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 	@When("^User enters keyword is a group that has Objective into Search textbox$")
 	public void user_enters_keyword_is_a_group_that_has_Objective_into_Search_textbox() {
 		String keyword = properties_value.getString("OBJ_LINKOBJ_GROUP_HAS_OBJ");
+		user_opens_Group_dropdown();
 		user_enters_keyword_into_Search_textbox(keyword);
 	}
 
@@ -223,15 +183,15 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lstObjective(driver).isDisplayed());
 	}
 
-	@When("^User clicks on Back button at Select Objective screen$")
-	public void user_clicks_on_Back_button_at_Select_Objective_screen() {
+	@When("^User performs to back the previous screen at Select Objective screen$")
+	public void user_performs_to_back_the_previous_screen_at_Select_Objective_screen() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnBack_SelectObjective(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnBack_SelectObjective(driver).click();
 	}
 
-	@When("^User clicks on Next button at Select Objective screen$")
-	public void user_clicks_on_Next_button_at_Select_Objective_screen() {
+	@When("^User performs to submit at Select Objective screen$")
+	public void user_performs_to_submit_at_Select_Objective_screen() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnNext_SelectObjective(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnNext_SelectObjective(driver).click();
@@ -265,8 +225,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		sleepOfThread(3000);
 	}
 
-	@When("^User clicks on Objective \"([^\"]*)\" at Select Objective screen$")
-	public void user_clicks_on_Objective_at_Select_Objective_screen(String objName) {
+	@When("^User selects the Objective \"([^\"]*)\" at Select Objective screen$")
+	public void user_selects_the_Objective_at_Select_Objective_screen(String objName) {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_radioObjective(driver, objName));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_radioObjective(driver, objName).click();
@@ -282,29 +242,6 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		// Close icon displays in Link to Key Result popup
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoClose(driver).isDisplayed());
-
-		// Select Group and its updated icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_lblSelectGroup_Selected(driver).isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_icoSelectGroup_Selected(driver).isDisplayed());
-
-		// Select Objective and its updated icon display in Link to Key Result
-		// popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_lblSelectObjective_Selected(driver).isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
-				.popupLinkToKeyResult_icoSelectObjective_Selected(driver).isDisplayed());
-
-		// Select Key Result and its icon display in Link to Key Result popup
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblSelectKeyResult(driver)
-				.isDisplayed());
-		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectKeyResult(driver)
-				.isDisplayed());
-
-		// Progress bar displays in Link to Key Result popup
-		Assert.assertTrue(
-				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_Progress(driver).isDisplayed());
 
 		// Key Result label displays in Link to Key Result popup
 		Assert.assertTrue(
@@ -332,8 +269,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.popupLinkToKeyResult_btnSubmit_SelectKeyResult(driver).isDisplayed());
 	}
 
-	@Given("^User clicks on Key Result dropdown$")
-	public void user_clicks_on_Key_Result_dropdown() {
+	@Given("^User opens Key Result dropdown$")
+	public void user_opens_Key_Result_dropdown() {
 		visibilityOf(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlKeyResult(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlKeyResult(driver).click();
@@ -359,15 +296,15 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.popupLinkToKeyResult_btnDeselectAll_SelectKeyResult(driver).isDisplayed());
 	}
 
-	@Given("^User clicks on Back button at Select Key Result screen$")
-	public void user_clicks_on_Back_button_at_Select_Key_Result_screen() throws Throwable {
+	@Given("^User performs to back the previous screen at Select Key Result screen$")
+	public void user_performs_to_back_the_previous_screen_at_Select_Key_Result_screen() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnBack_SelectKeyResult(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnBack_SelectKeyResult(driver).click();
 	}
 
-	@Given("^User clicks on Submit button at Select Key Result screen$")
-	public void user_clicks_on_Submit_button_at_Select_Key_Result_screen() {
+	@Given("^User performs to submit at Select Key Result screen$")
+	public void user_performs_to_submit_at_Select_Key_Result_screen() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnSubmit_SelectKeyResult(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnSubmit_SelectKeyResult(driver).click();
@@ -381,8 +318,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		assertEquals(expected_msgError, actual_msgError);
 	}
 
-	@Given("^User clicks on Key Result \"([^\"]*)\" in Key Result dropdown$")
-	public void user_clicks_on_Key_Result_in_Key_Result_dropdown(String krName) {
+	@Given("^User selects Key Result \"([^\"]*)\" in Key Result dropdown$")
+	public void user_selects_Key_Result_in_Key_Result_dropdown(String krName) {
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_LinkObjectives
 				.popupLinkToKeyResult_krName_SelectKeyResult(driver, krName));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_krName_SelectKeyResult(driver, krName)
@@ -395,14 +332,14 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.popupLinkToKeyResult_ddlKeyResult_Selected(driver, krName).isDisplayed());
 	}
 
-	@When("^User clicks on Select All button in Key Result dropdown$")
-	public void user_clicks_on_Select_All_button_in_Key_Result_dropdown() {
+	@When("^User performs to select all of Key Result in Key Result dropdown$")
+	public void user_performs_to_select_all_of_Key_Result_in_Key_Result_dropdown() {
 		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_LinkObjectives
 				.popupLinkToKeyResult_btnSelectAll_SelectKeyResult(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnSelectAll_SelectKeyResult(driver).click();
 
-		// Collapse Key Result dropdown menu by click on Select Key Result icon
-		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_icoSelectKeyResult(driver).click();
+		// Collapse Key Result dropdown menu by click on Title
+		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_lblTitle(driver).click();
 	}
 
 	@Then("^The all of Key Result \"([^\"]*)\" and \"([^\"]*)\" displays in Key Result dropdown$")
@@ -415,8 +352,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.popupLinkToKeyResult_ddlKeyResult_multiSelected(driver, krName1, krName2).click();
 	}
 
-	@When("^User clicks on Deselect All button in Key Result dropdown$")
-	public void user_clicks_on_Deselect_All_button_in_Key_Result_dropdown() {
+	@When("^User performs to deselect all of Key Result in Key Result dropdown$")
+	public void user_performs_to_deselect_all_of_Key_Result_in_Key_Result_dropdown() {
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnDeselectAll_SelectKeyResult(driver)
 				.click();
 	}
@@ -456,7 +393,7 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup_txtSearch(driver));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup_txtSearch(driver).sendKeys(keyword);
 
-		// waiting for search result displays and and gets the selected item as
+		// waiting for search result displays and gets the selected item as
 		// data in Group dropdown
 		sleepOfThread(3000);
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup(driver).click();
