@@ -17,6 +17,10 @@ public class PageObj_Add_New_Objective {
         element = driver.findElement(By.xpath("//h5[@id='titleQuarter']"));
         return element;
     }
+    public static WebElement addObj_value_quarter(WebDriver driver, String quarter) {
+        element = driver.findElement(By.xpath("//h5[contains(text(),'" + quarter + "')]"));
+        return element;
+    }
     
     public static WebElement addObj_tbx_name(WebDriver driver) {
         element = driver.findElement(By.xpath("//input[@name='name']"));

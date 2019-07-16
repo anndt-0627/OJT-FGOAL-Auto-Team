@@ -55,8 +55,8 @@ Feature: Add Objective function
     And User selects quarter value
     And User perform to add new Objective
     Then Successfull "<message>" displays
-    And "<obj_name>", weight "<value>" and "<quarter>" of new objective are matched with values user had seleted
+    And Objective name, weight "<value>" and quarter of new objective are matched with values user had seleted
 
     Examples: 
       | value | message           |
-      |     3 | Create Successful |
+      |     3 | Create successful |
