@@ -61,4 +61,3 @@ Feature: Add Objective function
     Examples: 
       | value | message           |
       |     3 | Create successful |
-

@@ -94,7 +94,6 @@ public class Add_New_Objective extends Common {
 		Assert.assertEquals(actual, message);
 	}
 
-
 	@Then("^Objective name, weight \"([^\"]*)\" and quarter of new objective are matched with values user had seleted$")
 	public void Objective_name_weight_and_quarter_of_new_objective_are_matched_with_values_user_had_seleted(String weight
 			) {
