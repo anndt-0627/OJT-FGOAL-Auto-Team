@@ -70,11 +70,12 @@ public class Add_New_Objective extends Common {
 		currenttime = Dateformat.format(date);
 		visibilityOf(driver, 10, PageObj_Add_New_Objective.addObj_tbx_name(driver));
 		PageObj_Add_New_Objective.addObj_tbx_name(driver).sendKeys(objectname + currenttime);
+
 	}
 
 	@When("^Weight is empty$")
 	public void weight_is_empty() {
-		visibilityOf(driver, 10, PageObj_Add_New_Objective.addObj_tbx_weight(driver));
+		visibilityOf(driver, 10, PageObj_Add_New_Objective.addObj_tbx_weight(driver));		
 		PageObj_Add_New_Objective.addObj_tbx_weight(driver).clear();
 
 	}
@@ -92,6 +93,7 @@ public class Add_New_Objective extends Common {
 		String actual = PageObj_Add_New_Objective.objDetails_lb_successfulmessage(driver).getText();
 		Assert.assertEquals(actual, message);
 	}
+
 
 	@Then("^Objective name, weight \"([^\"]*)\" and quarter of new objective are matched with values user had seleted$")
 	public void Objective_name_weight_and_quarter_of_new_objective_are_matched_with_values_user_had_seleted(String weight

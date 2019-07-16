@@ -37,7 +37,7 @@ Feature: Add Objective function
   Scenario Outline: Error message displays when weight is invalid
     Given User is on Add Objective form
     When User enters valid objective name
-    And User selects quarter value   
+    And User selects quarter value  
     And User enters weight is "<value>" in step
     And User perform to add new Objective
     Then Weight error "<message>" displays
