@@ -14,49 +14,49 @@ Feature: Add Objective function
     And User enters weight is "<value>" in step
     And User selects quarter value
     And User perform to add new Objective
-    Then Browser Alert "<message>" displays
+    Then Name error "<message>" displays
 
     Examples: 
-      | value | message                    |
-      |     3 | Please fill out this field |
+      | value | message                 |
+      |     3 | This field is required. |
 
   @invalid_case
-  Scenario Outline: Error message displays when target is empty
+  Scenario Outline: Error message displays when weight is empty
     Given User is on Add Objective form
-    When User enters valid "<obj_name>"
+    When User enters valid objective name
     And Weight is empty
     And User selects quarter value
     And User perform to add new Objective
-    Then Browser Alert "<message>" displays
+    Then Weight error "<message>" displays
 
     Examples: 
-      | obj_name            | message                    |
-      | testing_Objective_1 | Please fill out this field |
+      | message                 |
+      | This field is required. |
 
   @invalid_case
-  Scenario Outline: Error message displays when target is invalid
+  Scenario Outline: Error message displays when weight is invalid
     Given User is on Add Objective form
-    When User enters valid "<obj_name>"
+    When User enters valid objective name
     And User selects quarter value
     And User enters weight is "<value>" in step
     And User perform to add new Objective
-    Then Error message "<content>" displays
+    Then Weight error "<message>" displays
 
     Examples: 
-      | obj_name            | value | content                               |
-      | testing_Objective_1 |     0 | Value must be less than or equal to 5 |
-      | testing_Objective_2 |     6 | Value must be more than or equal to 1 |
+      | value | message                               |
+      |     0 | Value must be less than or equal to 5 |
+      |     6 | Value must be more than or equal to 1 |
 
   @valid_case
   Scenario Outline: User is able to create new objective with all valid data
     Given User is on Add Objective form
-    When User enters valid "<obj_name>"
+    When User enters valid objective name
     And User enters weight is "<value>" in step
     And User selects quarter value
     And User perform to add new Objective
-    Then Successfull message displays: Create successfull
-    And Name, weight and quarter of new objective are matched with values user had seleted
+    Then Successfull "<message>" displays
+    And Objective name, weight "<value>" and quarter of new objective are matched with values user had seleted
 
     Examples: 
-      | obj_name            | value |
-      | testing_Objective_1 |     3 |
+      | value | message           |
+      |     3 | Create successful |
