@@ -25,7 +25,7 @@ Feature: Objective_Quick Actions
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Delete option in Quick Actions menu
     Then Title of Delete objective popup displays
-    And Confirm delete content displays in Delete objective popup
+    And Message confirming the deletion of "<objName>" displays in Delete objective popup
     And Close button displays in Delete objective popup
     And Delete button displays in Delete objective popup
 
@@ -46,14 +46,13 @@ Feature: Objective_Quick Actions
       | objName         |
       | Test and Delete |
 
-  Scenario Outline: Verify user is  able to delete Objective successfully
+  Scenario Outline: Verify user is able to delete Objective successfully
     Given User navigates to Dashboard screen
     When User clicks on "<objName>" item in My Objectives section
     And User clicks on the Quick Actions icon in Objective section
     And User clicks on Delete option in Quick Actions menu
     And User clicks on Delete button in Delete objective popup
-    Then Delete objective popup closes
-    And Group screen displays
+    Then Objective "<objName>" did not display on Dashboard screen
 
     Examples: 
       | objName         |

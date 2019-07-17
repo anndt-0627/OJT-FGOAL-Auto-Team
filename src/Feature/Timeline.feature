@@ -1,6 +1,5 @@
 Feature: Timeline
-  Background:
-  Scenario: Login successfully with valid WSM account
+  Background: Login successfully with valid WSM account
     Given User navigate to Login page of Fgoal
     When User navigate to Login page of WSM
     And User enter email on Login WSM page
