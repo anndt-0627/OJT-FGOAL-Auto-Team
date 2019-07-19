@@ -3,10 +3,10 @@ package stepDefinition;
 import java.util.ResourceBundle;
 
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.*;
 
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageObject.pageObj_Objective_QuickActions_ChangeName;
@@ -20,63 +20,42 @@ public class Objective_QuickActions_ChangeName extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	@Given("^User navigates to Dashboard screen$")
-	public void user_navigates_to_Dashboard_screen() {
-		pageObj_Objective_QuickActions_ChangeName.menuDashboard(driver).click();
+	@When("^User navigates to Objective \"([^\"]*)\"$")
+	public void user_navigates_to_Objective(String objName) {
+		// If the Objective is existed then go to Objective details screen
+		// If the Objective does not exist then creating this Objective
+		try {
+			Assert.assertTrue(
+					pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName).isDisplayed());
+			moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
+			pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName).click();
+		} catch (NoSuchElementException e) {
+			create_a_new_Objective(objName);
+		}
 	}
 
-	@When("^Create a new Objective with \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void create_a_new_Objective_with_and(String objName, String objWeight) {
-		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
-		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
-		pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver).click();
-
-		pageObj_Objective_QuickActions_ChangeName.txtName(driver).sendKeys(objName);
-
-		pageObj_Objective_QuickActions_ChangeName.txtWeight(driver).clear();
-		pageObj_Objective_QuickActions_ChangeName.txtWeight(driver).sendKeys(objWeight);
-
-		pageObj_Objective_QuickActions_ChangeName.btnAddObjective(driver).click();
-	}
-
-	@When("^User clicks on \"([^\"]*)\" item in My Objectives section$")
-	public void user_clicks_on_item_in_My_Objectives_section(String objName) {
-		visibilityOfElementToBeClickable(driver, 20,
-				pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
-		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName));
-		pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, objName).click();
-	}
-
-	@When("^User clicks on the Quick Actions icon in Objective section$")
-	public void user_clicks_on_the_Quick_Actions_icon_in_Objective_section() {
+	@When("^User opens Quick Actions popup of Objective$")
+	public void user_opens_Quick_Actions_popup_of_Objective() {
 		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver));
 		pageObj_Objective_QuickActions_ChangeName.icoQuickActions(driver).click();
 	}
 
-	@When("^User clicks on Update Objective title option in Quick Actions menu$")
-	public void user_clicks_on_Update_Objective_title_option_in_Quick_Actions_menu() {
+	@When("^User performs to open Update Objective title popup$")
+	public void user_performs_to_open_Update_Objective_title_popup() {
 		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.itmUpdateObjectiveTitle(driver));
 		pageObj_Objective_QuickActions_ChangeName.itmUpdateObjectiveTitle(driver).click();
 	}
 
 	@Then("^Update Objective title popup opens$")
 	public void update_Objective_title_popup_opens() {
-		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
-		Assert.assertTrue(
-				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver).isDisplayed());
-	}
-
-	@Then("^Title of Update Objective title popup displays$")
-	public void title_of_Update_Objective_title_popup_displays() {
+		// Title of Update Objective title popup displays
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver));
 		String actual_lblTitle = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblTitle(driver)
 				.getText();
 		String expected_lblTitle = properties_value.getString("OBJ_NAME_TITLE");
 		assertEquals(expected_lblTitle, actual_lblTitle);
-	}
 
-	@Then("^Name label and asterisk symbol displays in Update Objective title popup$")
-	public void name_label_and_asterisk_symbol_displays_in_Update_Objective_title_popup() {
+		// Name label and asterisk symbol displays
 		String actual_lblName = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_lblName(driver)
 				.getText();
 		String expected_lblName = properties_value.getString("OBJ_NAME_NAME");
@@ -86,22 +65,16 @@ public class Objective_QuickActions_ChangeName extends Common {
 				.popupUpdateObjectiveTitle_sybAsterisk(driver).getText();
 		String expected_sybAsterisk = properties_value.getString("OBJ_ASTERISK");
 		assertEquals(expected_sybAsterisk, actual_sybAsterisk);
-	}
 
-	@Then("^Name textbox displays in Update Objective title popup$")
-	public void name_textbox_displays_in_Update_Objective_title_popup() {
+		// Name textbox displays
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver).isDisplayed());
-	}
 
-	@Then("^Close button displays in Update Objective title popup$")
-	public void close_button_displays_in_Update_Objective_title_popup() {
+		// Close button displays
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_btnClose(driver).isDisplayed());
-	}
 
-	@Then("^Update button displays in Update Objective title popup$")
-	public void update_button_displays_in_Update_Objective_title_popup() {
+		// Update button displays
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_btnUpdate(driver).isDisplayed());
 	}
@@ -123,6 +96,8 @@ public class Objective_QuickActions_ChangeName extends Common {
 
 	@When("^User submits Update Objective title popup$")
 	public void user_submits_Update_Objective_title_popup() {
+		visibilityOfElementToBeClickable(driver, 20,
+				pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_btnUpdate(driver));
 		pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_btnUpdate(driver).click();
 	}
 
@@ -146,18 +121,55 @@ public class Objective_QuickActions_ChangeName extends Common {
 		assertEquals(valid_value, actual_lblObjectiveName);
 	}
 
-	@Then("^The error message exist data displays$")
-	public void the_error_message_exist_data_displays() {
+	@When("^User removes data in Name textbox$")
+	public void user_removes_data_in_Name_textbox() {
+		pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_txtName(driver).clear();
+	}
+
+	@Then("^The error message required data displays$")
+	public void the_error_message_required_data_displays() {
+		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_msgError(driver));
+		String actual_msgError = pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_msgError(driver)
+				.getText();
+		String expected_msgError = properties_value.getString("OBJ_UPDATE_MSG_ERROR_REQUIRED_NAME");
+		assertEquals(expected_msgError, actual_msgError);
+	}
+
+	@Then("^The error message existed data displays$")
+	public void the_error_message_existed_data_displays() {
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_ChangeName.msgError(driver));
 		String actual_msgError = pageObj_Objective_QuickActions_ChangeName.msgError(driver).getText();
 		String expected_msgError = properties_value.getString("OBJ_UPDATE_MSG_ERROR_EXISTED_NAME");
 		assertEquals(expected_msgError, actual_msgError);
 	}
 
-	@When("^User clicks on Close button in Update Objective title popup$")
-	public void user_clicks_on_Close_button_in_Update_Objective_title_popup() {
+	@When("^Checking the existence or creating Objective \"([^\"]*)\"$")
+	public void checking_the_existence_or_creating_Objective(String existedObjName) {
+		// If the Objective is existed then do nothing
+		// If the Objective does not exist then creating this Objective and back to Dashboard screen
+		try {
+			Assert.assertTrue(
+					pageObj_Objective_QuickActions_ChangeName.DB_ObjectiveName(driver, existedObjName).isDisplayed());
+		} catch (NoSuchElementException e) {
+			create_a_new_Objective(existedObjName);
+			pageObj_Objective_QuickActions_ChangeName.menuDashboard(driver).click();
+		}
+	}
+
+	@When("^User performs to close Update Objective title popup$")
+	public void user_performs_to_close_Update_Objective_title_popup() {
 		pageObj_Objective_QuickActions_ChangeName.popupUpdateObjectiveTitle_btnClose(driver).click();
 		sleepOfThread(3000);
 	}
 
+	public void create_a_new_Objective(String objName) {
+		visibilityOfElementToBeClickable(driver, 20, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
+		moveToElement(driver, pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver));
+		pageObj_Objective_QuickActions_ChangeName.btnAddNewObj(driver).click();
+
+		pageObj_Objective_QuickActions_ChangeName.txtName(driver).sendKeys(objName);
+
+		pageObj_Objective_QuickActions_ChangeName.btnAddObjective(driver).click();
+		sleepOfThread(3000);
+	}
 }

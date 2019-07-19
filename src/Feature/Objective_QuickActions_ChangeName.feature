@@ -10,25 +10,10 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the Update Objective title popup shows up when selecting Update Objective title option in Quick Actions menu
     Given User navigates to Dashboard screen
-    When Create a new Objective with "<objName>" and "<objWeight>"
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
     Then Update Objective title popup opens
-
-    Examples: 
-      | objName               | objWeight |
-      | Improve English skill |         3 |
-
-  Scenario Outline: Verify the components of Update Objective title popup
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
-    Then Title of Update Objective title popup displays
-    And Name label and asterisk symbol displays in Update Objective title popup
-    And Name textbox displays in Update Objective title popup
-    And Close button displays in Update Objective title popup
-    And Update button displays in Update Objective title popup
 
     Examples: 
       | objName               |
@@ -36,9 +21,9 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the value in Name textbox is correct with the Objective that user clicks on
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
     Then The value in Name textbox is equal to "<objName>"
 
     Examples: 
@@ -47,9 +32,9 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify Update Objective Name successfully with valid data
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
     And User updates the data with value is "<valid_value>" into Name textbox
     And User submits Update Objective title popup
     Then Update Objective title popup closes
@@ -57,35 +42,49 @@ Feature: Objective_Quick Actions
     And Objective Name in Objective section is equal to "<valid_value>"
 
     Examples: 
-      | objName               | valid_value                  |
-      | Improve English skill | 123 456 789                  |
-      | 123 456 789           | !@$ %^& ***                  |
-      | !@$ %^& ***           | 123 qwe !@$                  |
-      | 123 qwe !@$           | <b>Improve English skill</b> |
+      | objName               | valid_value     |
+      | Improve English skill | 123 456 789     |
+      | 123 456 789           | !@$ %^& ***     |
+      | !@$ %^& ***           | 123 qwe !@$     |
+      | 123 qwe !@$           | <b>HTML tag</b> |
+
+  Scenario Outline: Verify user is not able to update Objective Name that it is empty
+    Given User navigates to Dashboard screen
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
+    And User removes data in Name textbox
+    And User submits Update Objective title popup
+    Then The error message required name displays
+
+    Examples: 
+      | objName               |
+      | Improve English skill |
 
   Scenario Outline: Verify user is not able to update Objective Name that it is existed in system
     Given User navigates to Dashboard screen
-    When Create a new Objective with "<objNameNew>" and "<objWeightNew>"
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
-    And User updates the data with value is "<objName>" into Name textbox
+    When Checking the existence or creating Objective "<existedObjName>"
+    And User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
+    And User updates the data with value is "<existedObjName>" into Name textbox
     And User submits Update Objective title popup
-    Then The error message exist data displays
+    Then The error message existed data displays
 
     Examples: 
-      | objNameNew                | objWeightNew | objName                      |
-      | Improve English skill New |            3 | <b>Improve English skill</b> |
+      | existedObjName | objName               |
+      | Lala Objective | Improve English skill |
 
   Scenario Outline: Verify user is not able to update Objective Name in case user clicks on Close button
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update Objective title option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update Objective title popup
     And User updates the data with value is "<valid_value>" into Name textbox
-    And User clicks on Close button in Update Objective title popup
+    And User performs to close Update Objective title popup
     Then Update Objective title popup closes
     And Objective Name in Objective section is equal to "<objName>"
 
     Examples: 
-      | objName                      | valid_value           |
-      | <b>Improve English skill</b> | Improve English skill |
+      | objName               | valid_value  |
+      | Improve English skill | Updated Name |
