@@ -7,26 +7,17 @@ Feature: Check Link of Objective
     And User enter valid password as password of user
     Then User should be access Fgoal successfully
 
-  @link_view
-  Scenario Outline: Verify that each Link To Objective displays Group, Objective, Key result and Quick Action button
-    Given User creats new objective with valid "<objName>" and "<weight>"
-    And User creats new linkto with "<group>" "<existObj>" and "<keyresult>"
-    When User checks existing of Group, Objective, Key result and Quick Action button of "<linkto>"
-    Then Group, Objective, Key result and Quick Action button are displayed
-
-    Examples: 
-      | objName        | weight | group         | existObj  | keyresult |
-      | Testing Object |      3 | testing group | section 1 | test      |
 
   @link_view
   Scenario Outline: Verify that corresponding Group screen displays when clicking on group link of any Link To
-    Given User navigates to Objective "<objName>" details has linkto
+    Given User creats new objective with valid Object name and "<weight>"
+    And User creats new linkto with "<group>" "<existObj>" and "<keyresult>"
     When User clicks "<group>" link of linkto
     Then Corresponding "<group>" screen dislays
 
     Examples: 
-      | objName        | group         |
-      | Testing Object | testing group |
+      | weight | group         | existObj  | keyresult |
+      |      3 | testing group | section 1 | test      |
 
   @link_view
   Scenario Outline: Verify that corresponding Objective Details screen displays when clicking on Object link of any Link To
