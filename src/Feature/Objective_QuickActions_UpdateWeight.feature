@@ -10,46 +10,20 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the Update weight popup shows up when selecting Update weight option in Quick Actions menu
     Given User navigates to Dashboard screen
-    When Create a new Objective with "<objName>" and "<objWeight>"
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update weight popup
     Then Update weight popup opens
-
-    Examples: 
-      | objName        | objWeight |
-      | Improve Weight |         4 |
-
-  Scenario Outline: Verify the components of Update weight popup
-    Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    Then Title of Update weight popup displays
-    And Weight label and asterisk symbol displays in Update weight popup
-    And Weight textbox displays in Update weight popup
-    And Close button displays in Update weight popup
-    And Update button displays in Update weight popup
 
     Examples: 
       | objName        |
       | Improve Weight |
 
-  Scenario Outline: Verify the value in Weight textbox is correct with the Objective that user clicks on
-    Given User navigates to Dashboard screen
-    When Create a new Objective with "<objName>" and "<objWeight>"
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
-    Then The value in Weight textbox is equal to "<objWeight>"
-
-    Examples: 
-      | objName          | objWeight |
-      | Improve Weight 2 |         4 |
-
   Scenario Outline: Verify Update Objective Weight successfully
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update weight popup
     And User updates the data with value is "<valid_value>" into Weight textbox
     And User submits Update weight popup
     Then Update weight popup closes
@@ -63,9 +37,9 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify user is not able to update Objective Weight with invalid data
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update weight popup
     And User updates the data with value is "<invalid_value>" into Weight textbox
     And User submits Update weight popup
     Then The <error_message> error message displays under Weight textbox
@@ -79,11 +53,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify user is not able to update Objective Weight in case user clicks on Close button
     Given User navigates to Dashboard screen
-    When User clicks on "<objName>" item in My Objectives section
-    And User clicks on the Quick Actions icon in Objective section
-    And User clicks on Update weight option in Quick Actions menu
+    When User navigates to Objective "<objName>"
+    And User opens Quick Actions popup of Objective
+    And User performs to open Update weight popup
     And User updates the data with value is "<valid_value>" into Weight textbox
-    And User clicks on Close button in Update weight popup
+    And User performs to close Update weight popup
     Then Update weight popup closes
 
     Examples: 
