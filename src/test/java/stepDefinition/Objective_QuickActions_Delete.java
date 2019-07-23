@@ -21,44 +21,33 @@ public class Objective_QuickActions_Delete extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	@When("^User clicks on Delete option in Quick Actions menu$")
-	public void user_clicks_on_Delete_option_in_Quick_Actions_menu() {
+	@When("^User performs to open Delete objective popup$")
+	public void user_performs_to_open_Delete_objective_popup() {
 		moveToElement(driver, pageObj_Objective_QuickActions_Delete.itmDelete(driver));
 		pageObj_Objective_QuickActions_Delete.itmDelete(driver).click();
 	}
 
-	@Then("^Delete objective popup opens$")
-	public void delete_objective_popup_opens() {
+	@Then("^Delete objective popup of \"([^\"]*)\" opens$")
+	public void delete_objective_popup_of_opens(String objName) {
+		// Title of Delete objective popup displays
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_Delete.popupDeleteObjective_lblTitle(driver));
 		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_lblTitle(driver).isDisplayed());
-	}
 
-	@Then("^Title of Delete objective popup displays$")
-	public void title_of_Delete_objective_popup_displays() {
-		visibilityOf(driver, 20, pageObj_Objective_QuickActions_Delete.popupDeleteObjective_lblTitle(driver));
-		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_lblTitle(driver).isDisplayed());
-	}
-
-	@Then("^Message confirming the deletion of \"([^\"]*)\" displays in Delete objective popup$")
-	public void message_confirming_the_deletion_of_displays_in_Delete_objective_popup(String objName) {
+		// Message confirming the deletion of "<objName>" displays
 		String actual_confirm_message = pageObj_Objective_QuickActions_Delete
 				.popupDeleteObjective_msgConfirm(driver, objName).getText();
 		String expected_confirm_message = properties_value.getString("OBJ_DELETE_MSG_CONFIRM") + objName + " ?";
 		assertEquals(expected_confirm_message, actual_confirm_message);
-	}
 
-	@Then("^Close button displays in Delete objective popup$")
-	public void close_button_displays_in_Delete_objective_popup() {
+		// Close button displays
 		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnClose(driver).isDisplayed());
-	}
 
-	@Then("^Delete button displays in Delete objective popup$")
-	public void delete_button_displays_in_Delete_objective_popup() {
+		// Delete button displays
 		Assert.assertTrue(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver).isDisplayed());
 	}
 
-	@When("^User clicks on Close button in Delete objective popup$")
-	public void user_clicks_on_Close_button_in_Delete_objective_popup() {
+	@When("^User performs to close Delete objective popup$")
+	public void user_performs_to_close_Delete_objective_popup() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnClose(driver));
 		pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnClose(driver).click();
@@ -70,8 +59,8 @@ public class Objective_QuickActions_Delete extends Common {
 		Assert.assertFalse(pageObj_Objective_QuickActions_Delete.popupDeleteObjective_lblTitle(driver).isDisplayed());
 	}
 
-	@When("^User clicks on Delete button in Delete objective popup$")
-	public void user_clicks_on_Delete_button_in_Delete_objective_popup() {
+	@When("^User confirms to delete Objective$")
+	public void user_confirms_to_delete_Objective() {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver));
 		pageObj_Objective_QuickActions_Delete.popupDeleteObjective_btnDelete(driver).click();
