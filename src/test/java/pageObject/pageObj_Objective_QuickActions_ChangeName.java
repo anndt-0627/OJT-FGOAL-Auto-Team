@@ -45,7 +45,7 @@ public class pageObj_Objective_QuickActions_ChangeName {
 	}
 
 	public static WebElement icoQuickActions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//a[@id='objective-comment-toggle']"));
+		element = driver.findElement(By.xpath("//div[@class='col-1']//a[@id='objective-comment-toggle']"));
 		return element;
 	}
 
@@ -99,6 +99,11 @@ public class pageObj_Objective_QuickActions_ChangeName {
 
 	public static WebElement msgError(WebDriver driver) {
 		element = driver.findElement(By.xpath("//div[@class='alert alert-danger']"));
+		return element;
+	}
+	
+	public static WebElement popupUpdateObjectiveTitle_msgError(WebDriver driver) {
+		element = driver.findElement(By.xpath("//span//label[@id='name-error']"));
 		return element;
 	}
 
