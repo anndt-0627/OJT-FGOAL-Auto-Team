@@ -20,29 +20,22 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	@When("^User clicks on Update weight option in Quick Actions menu$")
-	public void user_clicks_on_Update_weight_option_in_Quick_Actions_menu() {
+	@When("^User performs to open Update weight popup$")
+	public void user_performs_to_open_Update_weight_popup() {
 		moveToElement(driver, pageObj_Objective_QuickActions_UpdateWeight.itmUpdateWeight(driver));
 		pageObj_Objective_QuickActions_UpdateWeight.itmUpdateWeight(driver).click();
 	}
 
 	@Then("^Update weight popup opens$")
 	public void update_weight_popup_opens() {
-		visibilityOf(driver, 20, pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver));
-		Assert.assertTrue(pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver).isDisplayed());
-	}
-
-	@Then("^Title of Update weight popup displays$")
-	public void title_of_Update_weight_popup_displays() {
+		// Title of Update weight popup displays
 		visibilityOf(driver, 20, pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver));
 		String actual_lblTitle = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblTitle(driver)
 				.getText();
 		String expected_lblTitle = properties_value.getString("OBJ_WEIGHT_TITLE");
 		assertEquals(expected_lblTitle, actual_lblTitle);
-	}
 
-	@Then("^Weight label and asterisk symbol displays in Update weight popup$")
-	public void weight_label_and_asterisk_symbol_displays_in_Update_weight_popup() {
+		// Weight label and asterisk symbol displays
 		String actual_lblWeight = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_lblWeight(driver)
 				.getText();
 		String expected_lblWeight = properties_value.getString("OBJ_WEIGHT_WEIGHT");
@@ -52,31 +45,18 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 				.getText();
 		String expected_sybAsterisk = properties_value.getString("OBJ_ASTERISK");
 		assertEquals(expected_sybAsterisk, actual_sybAsterisk);
-	}
 
-	@Then("^Weight textbox displays in Update weight popup$")
-	public void weight_textbox_displays_in_Update_weight_popup() {
+		// Weight textbox displays
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_txtWeight(driver).isDisplayed());
-	}
 
-	@Then("^Close button displays in Update weight popup$")
-	public void close_button_displays_in_Update_weight_popup() {
+		// Close button displays
 		Assert.assertTrue(pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_btnClose(driver).isDisplayed());
-	}
 
-	@Then("^Update button displays in Update weight popup$")
-	public void update_button_displays_in_Update_weight_popup() {
+		// Update button displays
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_btnUpdate(driver).isDisplayed());
-	}
 
-	@Then("^The value in Weight textbox is equal to \"([^\"]*)\"$")
-	public void the_value_in_Weight_textbox_is_equal_to(String expected_objWeight) {
-		visibilityOf(driver, 20, pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_txtWeight(driver));
-		String actual_txtWeight = pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_txtWeight(driver)
-				.getAttribute("value");
-		assertEquals(expected_objWeight, actual_txtWeight);
 	}
 
 	@When("^User updates the data with value is \"([^\"]*)\" into Weight textbox$")
@@ -91,6 +71,7 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 	@When("^User submits Update weight popup$")
 	public void user_submits_Update_weight_popup() {
 		pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_btnUpdate(driver).click();
+		sleepOfThread(3000);
 	}
 
 	@Then("^Update weight popup closes$")
@@ -125,8 +106,8 @@ public class Objective_QuickActions_UpdateWeight extends Common {
 		assertEquals(expected_msgError, actual_msgError);
 	}
 
-	@When("^User clicks on Close button in Update weight popup$")
-	public void user_clicks_on_Close_button_in_Update_weight_popup() {
+	@When("^User performs to close Update weight popup$")
+	public void user_performs_to_close_Update_weight_popup() {
 		pageObj_Objective_QuickActions_UpdateWeight.popupUpdateWeight_btnClose(driver).click();
 		sleepOfThread(3000);
 	}
