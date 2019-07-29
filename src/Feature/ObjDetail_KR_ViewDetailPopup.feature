@@ -1,5 +1,5 @@
-Feature: Objective_Quick Actions
-  Description: Testing Change Objective Name in Quick Actions of Objective
+Feature: ObjDetail_KR_ViewDetailPopup
+  Description: Testing for View Detail popup of Key Result
 
   Background: 
     Given User navigate to Login page of Fgoal
@@ -47,6 +47,7 @@ Feature: Objective_Quick Actions
     And User opens View Detail popup of Key Result "<krName>"
     And User enters "<data>" into Progress textbox
     Then The success update message of Key Result displays
+    And The progress of Key Result will be "<data>"
 
     Examples: 
       | objName            | krName               | data |
@@ -88,6 +89,7 @@ Feature: Objective_Quick Actions
     And User opens View Detail popup of Key Result "<krName>"
     And User enters "<data>" into Weight textbox
     Then The success update message of Key Result displays
+    And The weight of Key Result will be "<data>"
 
     Examples: 
       | objName            | krName               | data |
@@ -129,6 +131,7 @@ Feature: Objective_Quick Actions
     And User opens View Detail popup of Key Result "<krName>"
     And User enters "<data>" into Description textarea and submits
     Then The success update message of Key Result Description displays
+    And The description of Key Result "<krName>" on Objective Details screen will be "<data>"
 
     Examples: 
       | objName            | krName               | data            |
