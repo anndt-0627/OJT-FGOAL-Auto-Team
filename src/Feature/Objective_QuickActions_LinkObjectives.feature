@@ -139,12 +139,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the components of Select Key Result screen of Link to Key Result popup in case user chooses an Objective and clicks on Next button at Select Objective screen
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     Then The components of Select Key Result screen with the selected Objective "<objNameNew>" displays
 
     Examples: 
@@ -153,12 +152,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify user is able to back Select Objective screen in case he is in Select Key Result screen and clicks on Back button
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User performs to back the previous screen at Select Key Result screen
     Then The components of Select Objective screen displays
 
@@ -168,12 +166,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the error message for case no choice Key Result displays in case user has not chosen Key Result yet
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User performs to submit at Select Key Result screen
     Then The error message for case no choice Key Result displays
 
@@ -183,16 +180,13 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the options of Key Result dropdown displays in case user clicks on
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User opens Key Result dropdown
     Then Key Result dropdown menu of Key Result dropdown displays
-    And Select All button displays in Key Result dropdown menu
-    And Deselect All button displays in Key Result dropdown menu
 
     Examples: 
       | objNameNew                 | krName           | objName               |
@@ -200,12 +194,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the selected Key Result option displays in Key Result dropdown in case user clicks on
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User opens and selects Key Result "<krName>" in Key Result dropdown
     Then The selected Key Result "<krName>" displays in Key Result dropdown
 
@@ -215,13 +208,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify all of the Key Result options display in Key Result dropdown in case user clicks on Select All button
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName1>" for Objective
-    And Checking the existence or creating Key Result "<krName2>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName1>" and "<krName2>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User opens and performs to select all of Key Result in Key Result dropdown
     Then The all of Key Result "<krName1>" and "<krName2>" displays in Key Result dropdown
 
@@ -231,13 +222,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify reset the data and display the placeholder in Key Result dropdown in case user clicks on Deselect All button
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName1>" for Objective
-    And Checking the existence or creating Key Result "<krName2>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName1>" and "<krName2>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User opens and performs to select all of Key Result in Key Result dropdown
     And The all of Key Result "<krName1>" and "<krName2>" displays in Key Result dropdown
     And User performs to deselect all of Key Result in Key Result dropdown
@@ -249,13 +238,11 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify Link to Key Result successfully popup displays in case user submits form
     Given User navigates to Group details screen of another Group
-    When User navigates to Objective "<objNameNew>"
-    And Checking the existence or creating Key Result "<krName1>" for Objective
-    And Checking the existence or creating Key Result "<krName2>" for Objective
+    When User navigates to Objective "<objNameNew>" has Key Result "<krName1>" and "<krName2>"
     And User goes to Dashboard screen and navigates to Objective "<objName>"
     And User performs to open Link to Key Result popup
-    And User enters keyword is a group that has Objective into Search textbox and submits
-    And User selects the Objective "<objNameNew>" at Select Objective screen and submits
+    And User selects valid Group and go to the next step
+    And User selects the Objective "<objNameNew>" and go to the next step
     And User opens and performs to select all of Key Result in Key Result dropdown
     And User performs to submit at Select Key Result screen
     Then Link to Key Result successfully popup displays

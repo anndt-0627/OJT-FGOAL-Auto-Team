@@ -175,8 +175,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 				.popupLinkToKeyResult_msgNoObjectiveInGroup(driver).isDisplayed());
 	}
 
-	@When("^User enters keyword is a group that has Objective into Search textbox and submits$")
-	public void user_enters_keyword_is_a_group_that_has_Objective_into_Search_textbox_and_submits() {
+	@When("^User selects valid Group and go to the next step$")
+	public void user_selects_valid_Group_and_go_to_the_next_step() {
 		String keyword = properties_value.getString("OBJ_LINKOBJ_GROUP_HAS_OBJ");
 		user_opens_Group_dropdown();
 		user_enters_keyword_into_Search_textbox(keyword);
@@ -224,16 +224,12 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		pageObj_Objective_QuickActions_LinkObjectives.menuMyGroups_Group(driver, anotherGroup).click();
 	}
 
-	@When("^Checking the existence or creating Key Result \"([^\"]*)\" for Objective$")
-	public void checking_the_existence_or_creating_Key_Result_for_Objective(String krName) {
-		// If the Key Result is existed then do nothing
-		// If the Key Result does not exist then creating this Key Result
-		try {
-			Assert.assertTrue(
-					pageObj_Objective_QuickActions_LinkObjectives.KeyResultName(driver, krName).isDisplayed());
-		} catch (NoSuchElementException e) {
-			create_new_Key_Result_for_Objective(krName);
-		}
+	@When("^User navigates to Objective \"([^\"]*)\" has Key Result \"([^\"]*)\"$")
+	public void user_navigates_to_Objective_has_Key_Result(String objName, String krName) {
+		Objective_QuickActions_ChangeName Obj = new Objective_QuickActions_ChangeName();
+		Obj.user_navigates_to_Objective(objName);
+
+		checking_the_existence_or_creating_Key_Result_for_Objective(krName);
 	}
 
 	@When("^User goes to Dashboard screen and navigates to Objective \"([^\"]*)\"$")
@@ -245,8 +241,8 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		navObj.user_navigates_to_Objective(objName);
 	}
 
-	@When("^User selects the Objective \"([^\"]*)\" at Select Objective screen and submits$")
-	public void user_selects_the_Objective_at_Select_Objective_screen_and_submits(String objName) {
+	@When("^User selects the Objective \"([^\"]*)\" and go to the next step$")
+	public void user_selects_the_Objective_and_go_to_the_next_step(String objName) {
 		visibilityOfElementToBeClickable(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_radioObjective(driver, objName));
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_radioObjective(driver, objName).click();
@@ -301,20 +297,17 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 
 	@Then("^Key Result dropdown menu of Key Result dropdown displays$")
 	public void key_Result_dropdown_menu_of_Key_Result_dropdown_displays() {
+		// Key Result dropdown menu displays
 		visibilityOf(driver, 20,
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlKeyResult_mennu(driver));
 		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlKeyResult_mennu(driver)
 				.isDisplayed());
-	}
 
-	@Then("^Select All button displays in Key Result dropdown menu$")
-	public void select_All_button_displays_in_Key_Result_dropdown_menu() {
+		// Select All button displays
 		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
 				.popupLinkToKeyResult_btnSelectAll_SelectKeyResult(driver).isDisplayed());
-	}
 
-	@Then("^Deselect All button displays in Key Result dropdown menu$")
-	public void deselect_All_button_displays_in_Key_Result_dropdown_menu() {
+		// Deselect All button displays
 		Assert.assertTrue(pageObj_Objective_QuickActions_LinkObjectives
 				.popupLinkToKeyResult_btnDeselectAll_SelectKeyResult(driver).isDisplayed());
 	}
@@ -418,6 +411,15 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		Assert.assertTrue(
 				pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_btnOK(driver).isDisplayed());
 	}
+	
+	@When("^User navigates to Objective \"([^\"]*)\" has Key Result \"([^\"]*)\" and \"([^\"]*)\"$")
+	public void user_navigates_to_Objective_has_Key_Result_and(String objNameNew, String krName1, String krName2) {
+		Objective_QuickActions_ChangeName Obj = new Objective_QuickActions_ChangeName();
+		Obj.user_navigates_to_Objective(objNameNew);
+
+		checking_the_existence_or_creating_Key_Result_for_Objective(krName1);
+		checking_the_existence_or_creating_Key_Result_for_Objective(krName2);
+	}
 
 	public void user_enters_keyword_into_Search_textbox(String keyword) {
 		visibilityOf(driver, 20,
@@ -430,12 +432,19 @@ public class Objective_QuickActions_LinkObjectives extends Common {
 		pageObj_Objective_QuickActions_LinkObjectives.popupLinkToKeyResult_ddlGroup(driver).click();
 	}
 
-	public void create_new_Key_Result_for_Objective(String krName) {
-		pageObj_Objective_QuickActions_LinkObjectives.btnAddKeyResult(driver).click();
+	public void checking_the_existence_or_creating_Key_Result_for_Objective(String krName) {
+		// If the Key Result is existed then do nothing
+		// If the Key Result does not exist then creating this Key Result
+		try {
+			Assert.assertTrue(
+					pageObj_Objective_QuickActions_LinkObjectives.KeyResultName(driver, krName).isDisplayed());
+		} catch (NoSuchElementException e) {
+			pageObj_Objective_QuickActions_LinkObjectives.btnAddKeyResult(driver).click();
 
-		visibilityOf(driver, 20, pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_txtName(driver));
-		pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_txtName(driver).sendKeys(krName);
-		pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_btnAdd(driver).click();
-		sleepOfThread(3000);
+			visibilityOf(driver, 20, pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_txtName(driver));
+			pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_txtName(driver).sendKeys(krName);
+			pageObj_Objective_QuickActions_LinkObjectives.popupAddKeyResult_btnAdd(driver).click();
+			sleepOfThread(3000);
+		}
 	}
 }
