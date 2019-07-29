@@ -79,9 +79,6 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		// Popup title displays
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.popupViewDetail_title(driver, krName));
 		Assert.assertTrue(pageObj_ObjDetail_KR_QuickActionPopup.popupViewDetail_title(driver, krName).isDisplayed());
-
-		// Close popup
-		pageObj_ObjDetail_KR_QuickActionPopup.popupViewDetail_btnClose(driver).click();
 	}
 
 	@Then("^Update Key result title popup of Key Result \"([^\"]*)\" opens$")
@@ -89,9 +86,6 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		// Popup title displays
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateKR_title(driver));
 		Assert.assertTrue(pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateKR_title(driver).isDisplayed());
-
-		// Close popup
-		pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateKR_btnClose(driver).click();
 	}
 
 	@Then("^Update weight popup of Key Result \"([^\"]*)\" opens$")
@@ -99,9 +93,6 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		// Popup title displays
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateWeight_title(driver));
 		Assert.assertTrue(pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateWeight_title(driver).isDisplayed());
-
-		// Close popup
-		pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateWeight_btnClose(driver).click();
 	}
 
 	@Then("^Update target popup of Key Result \"([^\"]*)\" opens$")
@@ -109,9 +100,6 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		// Popup title displays
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateTarget_title(driver));
 		Assert.assertTrue(pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateTarget_title(driver).isDisplayed());
-
-		// Close popup
-		pageObj_ObjDetail_KR_QuickActionPopup.popupUpdateTarget_btnClose(driver).click();
 	}
 
 	@Then("^Delete popup of Key Result \"([^\"]*)\" opens$")
@@ -119,8 +107,5 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		// Popup title displays
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.popupDelete_title(driver));
 		Assert.assertTrue(pageObj_ObjDetail_KR_QuickActionPopup.popupDelete_title(driver).isDisplayed());
-
-		// Close popup
-		pageObj_ObjDetail_KR_QuickActionPopup.popupDelete_btnClose(driver).click();
 	}
 }

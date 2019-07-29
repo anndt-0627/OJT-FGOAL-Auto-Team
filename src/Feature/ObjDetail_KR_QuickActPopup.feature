@@ -1,5 +1,5 @@
-Feature: Objective_Quick Actions
-  Description: Testing Change Objective Name in Quick Actions of Objective
+Feature: Objective Detail - Quick Action of Key Result
+  Description: Testing for Quick Action popup of Key Result
 
   Background: 
     Given User navigate to Login page of Fgoal
@@ -10,8 +10,7 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the Quick Actions popup of Key Result shows up when clicking on the Quick Action icon
     Given User navigates to Dashboard screen
-    When User navigates to Objective "<objName>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objName>" has Key Result "<krName>"
     And User opens Quick Actions popup of Key Result "<krName>"
     Then Quick Actions popup of Key Result opens
 
@@ -21,8 +20,7 @@ Feature: Objective_Quick Actions
 
   Scenario Outline: Verify the corresponding popup of Key Result shows up when clicking on the item in Quick Action icon
     Given User navigates to Dashboard screen
-    When User navigates to Objective "<objName>"
-    And Checking the existence or creating Key Result "<krName>" for Objective
+    When User navigates to Objective "<objName>" has Key Result "<krName>"
     And User opens Quick Actions popup of Key Result "<krName>"
     And User opens <itmQAct> popup of Key Result
     Then <itmQAct> popup of Key Result "<krName>" opens
