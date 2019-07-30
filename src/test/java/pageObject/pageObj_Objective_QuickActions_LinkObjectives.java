@@ -168,6 +168,11 @@ public class pageObj_Objective_QuickActions_LinkObjectives {
 		return element;
 	}
 
+	public static WebElement KeyResultName(WebDriver driver, String krName) {
+		element = driver.findElement(By.xpath("//a[contains(text(),'" + krName + "')]"));
+		return element;
+	}
+
 	// ====================FGoal/ Objective detail/ popup Add new Key
 	// Result====================
 
