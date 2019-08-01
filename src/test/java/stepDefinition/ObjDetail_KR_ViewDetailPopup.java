@@ -24,15 +24,6 @@ public class ObjDetail_KR_ViewDetailPopup extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	@When("^User navigates to Objective \"([^\"]*)\" has Key Result \"([^\"]*)\"$")
-	public void user_navigates_to_Objective_has_Key_Result(String objName, String krName) {
-		Objective_QuickActions_ChangeName Obj = new Objective_QuickActions_ChangeName();
-		Obj.user_navigates_to_Objective(objName);
-
-		Objective_QuickActions_LinkObjectives KeyResult = new Objective_QuickActions_LinkObjectives();
-		KeyResult.checking_the_existence_or_creating_Key_Result_for_Objective(krName);
-	}
-
 	@When("^User opens View Detail popup of Key Result \"([^\"]*)\"$")
 	public void user_opens_View_Detail_popup_of_Key_Result(String krName) {
 		ObjDetail_KR_QuickActPopup popupViewDetail = new ObjDetail_KR_QuickActPopup();
