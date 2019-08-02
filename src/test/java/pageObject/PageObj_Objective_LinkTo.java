@@ -31,13 +31,13 @@ public class PageObj_Objective_LinkTo {
         return element;
     }
     
-    public static WebElement Objective_btn_QuickAction(WebDriver driver, String object) {
-        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div[@class='form-group m-form__group row']//a[@id='objective-comment-toggle']"));
+    public static WebElement Objective_btn_QuickAction(WebDriver driver, String object, String keyresult) {
+        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div//label[contains(text(),'"+keyresult+"')]/ancestor-or-self::div[@class='form-group m-form__group row']//a[@id='objective-comment-toggle']"));
         return element;
     }
     
-    public static WebElement Objective_popup_QuickAction(WebDriver driver, String object) {
-        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div[@class='form-group m-form__group row']//div[@id='dropdown-objective']/div[@class='m-dropdown__wrapper dropdown-small']"));
+    public static WebElement Objective_popup_QuickAction(WebDriver driver, String object, String keyresult) {
+        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div//label[contains(text(),'"+keyresult+"')]/ancestor-or-self::div[@class='form-group m-form__group row']//div[@id='dropdown-objective']/div[@class='m-dropdown__wrapper dropdown-small']"));
         return element;
     }
     
@@ -46,8 +46,8 @@ public class PageObj_Objective_LinkTo {
         return element;
     }
     
-    public static WebElement Objective_icon_waiting(WebDriver driver, String object) {
-        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div[@class='form-group m-form__group row']//div[@class='mt-2 mb-2']//i[@class='icon-ic_waiting m--font-warning size_request_link_status_15']"));
+    public static WebElement Objective_icon_waiting(WebDriver driver, String object, String keyresult) {
+        element = driver.findElement(By.xpath("//a[contains(text(),'" + object + "')]/ancestor-or-self::div//label[contains(text(),'"+keyresult+"')]/ancestor-or-self::div[@class='form-group m-form__group row']//div[@class='mt-2 mb-2']//i[@class='icon-ic_waiting m--font-warning size_request_link_status_15']"));
         return element;
     }
     

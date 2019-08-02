@@ -665,6 +665,13 @@ public class ObjDetail_QuickActions extends Common {
 		checking_the_existence_or_creating_Key_Result_for_Objective(krName1);
 		checking_the_existence_or_creating_Key_Result_for_Objective(krName2);
 	}
+	
+	@When("User enters keyword is a group that has Objective into Search textbox$")
+	public void user_enters_keyword_is_a_group_that_has_Objective_into_Search_textbox (){
+		String keyword = properties_value.getString("OBJ_LINKOBJ_GROUP_HAS_OBJ");
+		user_opens_Group_dropdown();
+		user_enters_keyword_into_Search_textbox(keyword);		
+	}
 
 	public void user_enters_keyword_into_Search_textbox(String keyword) {
 		visibilityOf(driver, 20, pageObj_ObjDetail_QuickActions.popupLinkToKeyResult_ddlGroup_txtSearch(driver));
