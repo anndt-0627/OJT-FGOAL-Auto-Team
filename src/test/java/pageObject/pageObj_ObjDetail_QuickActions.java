@@ -372,6 +372,7 @@ public class pageObj_ObjDetail_QuickActions {
 		return element;
 	}
 	
+	
 	public static WebElement popupAddKeyResult_txtWeight(WebDriver driver) {
 		element = driver.findElement(By.xpath("//input[@id='newWeightKeyResult']"));
 		return element;

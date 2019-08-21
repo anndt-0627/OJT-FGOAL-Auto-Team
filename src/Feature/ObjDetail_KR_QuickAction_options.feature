@@ -116,3 +116,4 @@ Feature: Key result Quick Actions options in Objective details
     Examples: 
       | objName                 | krName                  | valid_value | weight | target | message           |
       | Trinh_Objective_Testing | Trinh_KeyResult_Testing |           3 |      1 |     25 | Update successful |
+@KR_change_target

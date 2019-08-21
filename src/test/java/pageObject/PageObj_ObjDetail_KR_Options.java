@@ -71,4 +71,5 @@ public class PageObj_ObjDetail_KR_Options {
 		element = driver.findElement(By.xpath("//form[@id='updateWeightKeyResult']//div[@class='error input-group']"));
 		return element;
 	}
+	
 }

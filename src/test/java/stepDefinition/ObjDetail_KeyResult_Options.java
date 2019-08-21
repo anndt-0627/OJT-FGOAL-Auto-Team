@@ -186,7 +186,7 @@ public class ObjDetail_KeyResult_Options extends Common {
 	@When("^User performs to update KR weight$")
 	public void user_performs_to_update_KR_weight() throws Throwable {
 		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver));
-		PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver).click();;
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver).click();
 	}
 	
 }
