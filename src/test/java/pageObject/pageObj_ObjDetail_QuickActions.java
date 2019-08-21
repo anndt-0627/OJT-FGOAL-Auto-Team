@@ -371,6 +371,16 @@ public class pageObj_ObjDetail_QuickActions {
 		element = driver.findElement(By.xpath("//button[@id='addNewKeyResultSubmitBtn']"));
 		return element;
 	}
+	
+	public static WebElement popupAddKeyResult_txtWeight(WebDriver driver) {
+		element = driver.findElement(By.xpath("//input[@id='newWeightKeyResult']"));
+		return element;
+	}
+	
+	public static WebElement popupAddKeyResult_txtTarget(WebDriver driver) {
+		element = driver.findElement(By.xpath("//input[@id='newTargettKeyResult']"));
+		return element;
+	}
 
 	// =====Popup Link to Key Result successfully=====
 
