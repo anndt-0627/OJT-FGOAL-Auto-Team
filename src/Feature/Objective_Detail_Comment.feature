@@ -1,4 +1,4 @@
-Feature: Objective_Detail_Comment 
+Feature: ObjectDetails_Comment 
 	Description: Objective Comment feature file
 
 Background: Login successfully with valid WSM account 
@@ -9,62 +9,66 @@ Background: Login successfully with valid WSM account
 	And User perform action Login on WSM page 
 	Then User can login successfully to Fgoal via WSM 
 	
-@Invalid_case 
-Scenario Outline: User can't submit an empty comment 
+	
+@Valid_case 
+Scenario Outline: User can navigate to screen objective detail 
 	Given User is on Dashboard screen 
-	When User navigate to screen detail of "<Objective_Name>" 
-	And User leave comment blank 
-	And User perform add comment action 
-	Then The blank comment isn't accepted 
+	When User select <Objective> in My Objectives 
+	And User click on icon text box in My Objectives 
+	Then Text box comment of objective is displayed 
 	
 	Examples: 
-		|Objective_Name	|
-		|ChauTTB_1		|
+		|Objective		|
+		|ChauTTB_01		|
+		
 		
 		@Valid_case 
-		Scenario Outline: User can submit a valid comment on their 
+		Scenario Outline: User can push a valid comment 
 			Given User is on Dashboard screen 
-			When User navigate to screen detail of "<Objective_Name>" 
-			And User input a "<Valid_Comment>" 
+			When User select <Objective> in My Objectives 
+			And User click on icon text box in My Objectives 
+			And User input a <ValidComment> 
 			And User perform add comment action 
-			Then The comment user has just submit is displayed 
+			Then The <ValidComment> user has just submit is displayed 
 			And Number of comment is updated exactly 
 			
 			Examples: 
-				|Objective_Name	|Valid_Comment		|
-				|ChauTTB_1		|abc|
-				|long content long content long content long content long content long content long content long content long content long content long content long content long content long content|
+				|Objective		|ValidComment	|
+				|ChauTTB_01		|test comment	|
+				
 				
 				@Valid_case 
-				Scenario Outline: User can edit their own comment 
+				Scenario Outline: User can push a comment with long omment 
 					Given User is on Dashboard screen 
-					When User navigate to screen detail of "<Objective_Name>" 
-					And User input "<Update_Valid_Comment>" 
+					When User select <Objective> in My Objectives 
+					And User click on icon text box in My Objectives 
+					And User input a <LongComment> 
 					And User perform add comment action 
-					Then The comment is updated 
-					And Number of comment at icon text box is kept 
+					Then The <LongComment> user has just submit is displayed 
 					
 					Examples: 
-						|Objective_Name	|Update_Valid_Comment	|
-						|ChauTTB_1		|abc_updated			|
+						|Objective		|LongComment	|
+						|ChauTTB_01		|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	|
+						
 						
 						@Valid_case 
-						Scenario: User can delete their own comment 
-							Given User is on Objective detail screen 
-							When User click on icon text box in My Objectives 
-							And User click on icon recycle bin of comment 
-							Then The comment is deleted from objective 
-							And Number of comment in their objective is updated exactly 
-							
-						@Valid_case 
-						Scenario Outline:
-						User can submit a valid comment on objective of other people 
+						Scenario Outline: User can edit a comment 
 							Given User is on Dashboard screen 
-							When User navigate to screen objective detail of other people 
-							And User try to input a "<Valid_Comment>"  for this objective 
+							When User select <Objective> in My Objectives 
+							And User click on icon text box in My Objectives 
+							And User input a <ValidComment> 
 							And User perform add comment action 
-							Then The comment is accepted
-							And Number of comment in objective is updated exactly 
+							And The <ValidComment> user has just submit is displayed 
+							And User update <Newcomment>
+							Then The <Newcomment> user has just submit is displayed
+							
 							Examples: 
-								|Valid_Comment	|
-								|test			|
+								|Objective		|ValidComment	|NewComment|
+								|ChauTTB_01		|test comment	|test comment updated| 
+								
+								@Valid_case 
+								Scenario: User can delete a comment 
+									Given User is on Objective detail screen 
+									When User click on icon text box in My Objectives 
+									And User click on icon recycle bin of a comment 
+									Then The comment is deleted 
