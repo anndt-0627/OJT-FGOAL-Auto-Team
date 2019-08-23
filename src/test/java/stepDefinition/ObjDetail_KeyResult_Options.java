@@ -119,8 +119,8 @@ public class ObjDetail_KeyResult_Options extends Common {
 		PageObj_ObjDetail_KR_Options.KR_Changename_btn_close(driver).click();;
 	}
 	
-	@Then("^\"([^\"]*)\" displays on Objective Details screen$")
-	public void message_displays_on_Objective_Details_screen(String message) throws Throwable {
+	@Then("^The \"([^\"]*)\" displays on Objective Details screen$")
+	public void the_message_displays_on_Objective_Details_screen(String message) throws Throwable {
 		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.ObjDetail_KR_lb_message(driver));
 		String actual = PageObj_ObjDetail_KR_Options.ObjDetail_KR_lb_message(driver).getText();
 		Assert.assertEquals(actual, message);
@@ -161,7 +161,7 @@ public class ObjDetail_KeyResult_Options extends Common {
 	public void the_invalid_min_or_max_value_error_message_displays_under_KR_Weight_textbox() throws Throwable {
 		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_lb_errormessage(driver));
 		String actual_msgError = PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_lb_errormessage(driver).getText();
-		String expected_msgError = input_value.getString("OBJ_WEIGHT_MSG_ERROR_MINMAX");
+		String expected_msgError = input_value.getString("KR_WEIGHT_MSG_ERROR_MINMAX");
 		assertEquals(expected_msgError, actual_msgError);
 	}
 
@@ -169,7 +169,7 @@ public class ObjDetail_KeyResult_Options extends Common {
 	public void the_invalid_integer_value_error_message_displays_under_KR_Weight_textbox() throws Throwable {
 		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_lb_errormessage(driver));
 		String actual_msgError = PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_lb_errormessage(driver).getText();
-		String expected_msgError = input_value.getString("OBJ_WEIGHT_MSG_ERROR_DIGIT");
+		String expected_msgError = input_value.getString("KR_WEIGHT_MSG_ERROR_DIGIT");
 		assertEquals(expected_msgError, actual_msgError);
 	}
 	@Then("^Change KR Weight popup is closed$")
@@ -189,4 +189,83 @@ public class ObjDetail_KeyResult_Options extends Common {
 		PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver).click();
 	}
 	
+	@Then("^KR weight of \"([^\"]*)\" is not changed and equal \"([^\"]*)\"$")
+	public void kr_weight_is_not_changed(String krName, String weight) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.ObjDetail_KR_record_weight(driver, krName));
+		String current_weight = PageObj_ObjDetail_KR_Options.ObjDetail_KR_record_weight(driver, krName).getAttribute("value");
+		assertEquals(weight, current_weight);
+	}
+	
+	@Then("^KR weight of \"([^\"]*)\" is updated to \"([^\"]*)\" successfully$")
+	public void KR_weight_is_updated_successfully(String krName, String weight) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver));
+		String current_weight = PageObj_ObjDetail_KR_Options.ObjDetail_KR_record_weight(driver, krName).getAttribute("value");
+		assertEquals(weight, current_weight);
+	}
+	
+	@When("^User opens Change Target popup of \"([^\"]*)\"$")
+	public void user_opens_Change_Target_popup_of(String krName) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_btn_ChangeTarget(driver, krName));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_btn_ChangeTarget(driver, krName).click();
+	}
+
+	@When("^User updates the data with value is \"([^\"]*)\" into KR Target textbox$")
+	public void user_updates_the_data_with_invalid_value_into_KR_Target_textbox(String invalid_target) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver).sendKeys(invalid_target);
+	}
+
+	@When("^User performs to change target of KR$")
+	public void user_performs_to_change_target_of_KR() throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_btn_update(driver));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_btn_update(driver).click();
+	}
+
+	@Then("^The \"([^\"]*)\" error message displays under KR target textbox$")
+	public void the_error_message_displays_under_KR_target_textbox(String error_message) throws Throwable {
+		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_lb_errormessage(driver));
+		String actual_msgError = PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_lb_errormessage(driver).getText();
+		assertEquals(error_message, actual_msgError);
+	}
+
+	@When("^User updates the data with valid value \"([^\"]*)\" into KR Target textbox$")
+	public void user_updates_the_data_with_valid_value_into_KR_Target_textbox(String valid_taget) throws Throwable {
+		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver).sendKeys(valid_taget);
+	}
+	
+	@Then("^KR target of \"([^\"]*)\" is updated to \"([^\"]*)\" successfully$")
+	public void kr_target_of_is_updated_to_successfully(String krName, String value_target) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver));
+		String current_target = PageObj_ObjDetail_KR_Options.ObjDetail_KR_record_target(driver, krName).getAttribute("max");
+		assertEquals(value_target, current_target);
+	}
+	
+	@Then("^Change KR Target popup is closed$")
+	public void change_KR_Target_popup_is_closed() throws Throwable {
+		Assert.assertFalse(PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_popup(driver).isDisplayed());
+	}
+	
+	@Then("^KR Target of \"([^\"]*)\" is not changed and equal \"([^\"]*)\"$")
+	public void kr_Target_of_is_not_changed_and_equal(String krName, String old_target) throws Throwable {
+		visibilityOf(driver, 10, PageObj_ObjDetail_KR_Options.KR_QuickAction_Changeweight_btn_update(driver));
+		String current_target = PageObj_ObjDetail_KR_Options.ObjDetail_KR_record_target(driver, krName).getAttribute("max");
+		assertEquals(old_target, current_target);
+	}
+	
+	@When("^User clear text in target textbox$")
+	public void user_clear_text_in_target_textbox() throws Throwable {
+		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_txb_Target(driver).clear();
+	}
+	
+	@When("^User performs to close Change KR target popup$")
+	public void user_performs_to_close_Change_KR_target_popup() throws Throwable {
+		visibilityOf(driver, 20, PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_btn_close(driver));
+		PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_btn_close(driver).click();
+	}
+	@Then("^Change Target popup displays$")
+	public void change_Target_popup_displays() throws Throwable {
+		Assert.assertTrue(PageObj_ObjDetail_KR_Options.KR_QuickAction_ChangeTarget_popup(driver).isDisplayed());
+	}
 }

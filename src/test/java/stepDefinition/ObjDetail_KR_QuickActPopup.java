@@ -15,7 +15,7 @@ public class ObjDetail_KR_QuickActPopup extends Common {
 		this.driver = Hooks.getDriver();
 	}
 
-	//@When("^User opens Quick Actions popup of Key Result \"([^\"]*)\"$")
+	@When("^User opens Quick Actions popup of Key Result \"([^\"]*)\"$")
 	public void user_opens_Quick_Actions_popup_of_Key_Result(String krName) {
 		visibilityOf(driver, 20, pageObj_ObjDetail_KR_QuickActionPopup.icoQuickActKR(driver, krName));
 		moveToElement(driver, pageObj_ObjDetail_KR_QuickActionPopup.icoQuickActKR(driver, krName));
