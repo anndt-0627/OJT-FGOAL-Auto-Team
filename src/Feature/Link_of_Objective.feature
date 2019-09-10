@@ -7,65 +7,43 @@ Feature: Check Link of Objective
     And User enter valid password as password of user
     Then User should be access Fgoal successfully
 
+  @link_view
+  Scenario: Verify that corresponding Group screen displays when clicking on group link of any Link To
+    Given User navigates to Objective details has linkto
+    When User clicks group link of linkto
+    Then Corresponding group screen dislays
 
   @link_view
-  Scenario Outline: Verify that corresponding Group screen displays when clicking on group link of any Link To
-    Given User creats new objective with valid Object name and "<weight>"
-    And User creats new linkto with "<group>" "<existObj>" and "<keyresult>"
-    When User clicks "<group>" link of linkto
-    Then Corresponding "<group>" screen dislays
-
-    Examples: 
-      | weight | group         | existObj  | keyresult |
-      |      3 | testing group | section 1 | test      |
+  Scenario: Verify that corresponding Objective Details screen displays when clicking on Object link of any Link To
+    Given User navigates to Objective details has linkto
+    When User clicks objective link
+    Then corresponding objective Details screen dislays
 
   @link_view
-  Scenario Outline: Verify that corresponding Objective Details screen displays when clicking on Object link of any Link To
-    Given User navigates to Objective "<objName>" details has linkto
-    When User clicks "<existObj>" link
-    Then corresponding "<existObj>" Details screen dislays
-
-    Examples: 
-      | objName        | existObj  |
-      | Testing Object | section 1 |
-
-  @link_view
-  Scenario Outline: Verify that Quick Action popup displays when clicking on Quick Action button of any Link To
-    Given User navigates to Objective "<objName>" details has linkto
+  Scenario: Verify that Quick Action popup displays when clicking on Quick Action button of any Link To
+    Given User navigates to Objective details has linkto
     When User performs to open Quick Action popup
     Then Quick Action popup dislays
 
-    Examples: 
-      | objName        |
-      | Testing Object |
-
   @link_cancel
-  Scenario Outline: Verify that Cancel link request dialog displays when clicking on Cancel option in Quick Action popup
-    Given User navigates to Objective "<objName>" details has linkto
+  Scenario: Verify that Cancel link request dialog displays when clicking on Cancel option in Quick Action popup
+    Given User navigates to Objective details has linkto
     When User performs to open Quick Action popup
     And User performs to open Cancel link request dialog
     Then Cancel link request dialog displays
 
-    Examples: 
-      | objName        |
-      | Testing Object |
-
   @link_cancel
-  Scenario Outline: Verify that Cancel link request dialog is closed, and Link To is not canceled when clicking on Close button in Cancel link request dialog
-    Given User navigates to Objective "<objName>" details has linkto
+  Scenario: Verify that Cancel link request dialog is closed, and Link To is not canceled when clicking on Close button in Cancel link request dialog
+    Given User navigates to Objective details has linkto
     When User performs to open Quick Action popup
     And User performs to open Cancel link request dialog
     And User performs to close Cancel link request dialog
     Then Cancel link request dialog is closed
     And Linkto is existing
 
-    Examples: 
-      | objName        |
-      | Testing Object |
-
   @link_cancel
   Scenario Outline: Verify that Cancel link request dialog is closed, and Link To is not displayed when clicking on Cancel link request button in  Cancel link request dialog
-    Given User navigates to Objective "<objName>" details has linkto
+    Given User navigates to Objective details has linkto
     When User performs to open Quick Action popup
     And User performs to open Cancel link request dialog
     And User performs to confirm cancel link to
@@ -74,5 +52,5 @@ Feature: Check Link of Objective
     And linkto has been canceled is not existing
 
     Examples: 
-      | objName        | message                          |
-      | Testing Object | You have rejected a link request |
+      | message                          |
+      | You have rejected a link request |

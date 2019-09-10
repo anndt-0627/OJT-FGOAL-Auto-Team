@@ -59,7 +59,7 @@ Feature: Objective_Quick Actions
     And User performs to open Update Objective title popup
     And User removes data in Name textbox
     And User submits Update Objective title popup
-    Then The error message required name displays
+    Then The error message required data displays
 
     Examples: 
       | objName               |
