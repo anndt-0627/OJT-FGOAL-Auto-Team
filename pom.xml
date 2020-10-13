@@ -16,7 +16,7 @@
         <!--Dependency Versions -->
         <selenium.version>3.141.59</selenium.version>
         <assertj-core.version>3.11.1</assertj-core.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <cucumber.version>1.2.5</cucumber.version>
         <cucumber-jvm.version>4.2.6</cucumber-jvm.version>
         <gherkin.version>2.12.2</gherkin.version>
