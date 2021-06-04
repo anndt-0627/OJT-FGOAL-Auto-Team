@@ -22,7 +22,7 @@
         <gherkin.version>2.12.2</gherkin.version>
         <webdrivermanager.version>3.4.0</webdrivermanager.version>
         <http-core.version>4.4.10</http-core.version>
-        <http-components.version>4.5.8</http-components.version>
+        <http-components.version>4.5.13</http-components.version>
 
 
         <!--Plugin Versions -->
